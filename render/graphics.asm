@@ -100,13 +100,14 @@ insertShape proc
 putInMap:
     xor bx,bx
     mov bl, byte ptr [si] ; bl contains yPos[i]
-    ; we have to multiply by 16
+    ; we have to multiply by 10
     mov ax, bx
-    shl ax, 4
-    ; ax stores 16bx
-    add al, byte ptr [di] 
-    ; ax = 15y + x , which is to calculate the index we should put the square in.
-    mov bx, ax ; can't use ax to access ds
+    shl ax, 3 ; 8x
+    shl bx, 1 ; 2x
+    add bx, ax ; 8y + 2y = 10y
+    ; ax stores 10bx
+    add bl, byte ptr [di] 
+    ; bx = 10y + x which is to calculate the index we should put the square in.
     mov ax, shape ; can't move mem to mem
     mov byte ptr shapeMap[bx], al
     inc si
@@ -118,15 +119,47 @@ putInMap:
     ret 6
 insertShape endp
 
-
+removeShape proc 
+    push bp
+    mov bp,sp
+    pusha
+    ; define parameters 
+    xPtr equ ss:[bp + 6]
+    yPtr equ ss:[bp + 4]
+    ; copy the xPos and yPos in the array to the map
+    mov cx, 4 ; 4 elements total
+    ; lea of xPtr and yPtr
+    mov di, xPtr
+    mov si, yPtr
+    ; remove from the map index , the shape for each xPos and matching yPos
+removeFromMap:
+    xor bx,bx
+    mov bl, byte ptr [si] ; bl contains yPos[i]
+    ; we have to multiply by 10
+    mov ax, bx
+    shl ax, 3 ; 8x
+    shl bx, 1 ; 2x
+    add bx, ax ; 8y + 2y = 10y
+    ; ax stores 10bx
+    add bl, byte ptr [di] 
+    ; bx = 10y + x which is to calculate the index we should put the square in.
+    mov byte ptr shapeMap[bx], 0 ; 0 -> no shape
+    inc si
+    inc di
+    loop removeFromMap
+    
+    popa
+    pop bp
+    ret 4
+removeShape endp 
 Graphics_DrawMapTiles proc
     pusha
     ; init loop base values
-    xor cx,cx; for 25 rows
+    xor cx,cx ; for 18 rows
     xor si,si  ; index counter
     lea ax, oShapeTexture
 rowInMap:
-    mov bx, 3 ; start value
+    mov bx, 14 ; start value
 columnsInMap:
     ; get whatever is inside the map.
     mov dl, shapeMap[si]
@@ -142,11 +175,11 @@ Texture:
 jmpTexture:
     inc si
     inc bx
-    cmp bx, 19 ; 19 - 3 = 16 , do the loop for each col
+    cmp bx, 24 ; 13 - 3 = 10, do the loop for each col
     jnz columnsInMap ; move to next row
     ; if last row (0 - 24), exit
     inc cx
-    cmp cx, 25
+    cmp cx, 18
     jnz rowInMap
     popa
     ret 

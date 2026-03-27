@@ -19,10 +19,15 @@ Colors_changeColor MACRO red,green,blue,index
     call Colors_changeColorFunc
 ENDM
 
-Graphics_insertShape MACRO x,y, Shape
+Graphics_insertShape MACRO x,y, Shape 
     push Shape
     push x
     push y
     call insertShape 
 ENDM
 
+Graphics_removeShape MACRO x,y
+    push x
+    push y
+    call removeShape
+ENDM

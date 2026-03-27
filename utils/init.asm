@@ -1,31 +1,38 @@
 .code
 init_Map proc
     pusha
-    mov si, 2 ; index
+    mov si, 13 ; index
     xor cx,cx ; amount of rows ( for x in rows)
     lea bx, paletteTexture
 columns:    
-    ; draw left side 
-    Graphics_DrawSquare 0,cx,greenForSides
-    Graphics_DrawSquare 1,cx,greenForSides
+    ; draw the right side
+    push ax
+    xor ax,ax
+
+rightSide:
+    Graphics_DrawSquare ax,cx,greenForSides
+    inc ax
+    cmp ax, 13
+    jnz rightSide
+    pop ax
     ; draw the pallete on the left side ( border )
     Textures_DrawTexture si,cx,bx
     ; add an offset from first pallete and draw right side ( border )
     mov di,si 
-    add di, 17 ; move to last index
+    add di, 11 ; move to last index
     Textures_DrawTexture di,cx,bx
     push ax
-    mov ax, 5
-    add di,2
+    mov ax, 15
+    inc di
 leftSide:
     Graphics_DrawSquare di,cx,greenForSides
     inc di
-    inc ax
-    cmp ax, 25
+    dec ax
+    cmp ax, 0
     jnz leftSide
     pop ax
     inc cx ; move to next row
-    cmp cx, 25 
+    cmp cx, 18
     jnz columns
     popa
     ret
