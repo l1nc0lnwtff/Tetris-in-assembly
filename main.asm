@@ -7,7 +7,7 @@ include includes\\header.asm
     bRunning db 1
 
     oShape equ 1
-    O_Xpos db 4,5,4,5   
+    O_Xpos db 0,1,0,1   
     O_Ypos db 0,0,1,1
 
     xPointer dw offset O_Xpos
@@ -20,27 +20,6 @@ include includes\\header.asm
    
 .code
 
-
-
-gameLoop proc 
-    
-
-game:
-    ; check if key pressed -> key handling -> gravity -> render -> repeat
-    
-
-    Graphics_insertShape xPointer,yPointer,oShape
-    ; put the map stuff on the frontBuffer , and render it 
-    call Graphics_DrawMapTiles 
-    call Graphics_swapBuffers
-
-    cmp bRunning,1
-    jz game
-    
-
-
-    ret 
-gameLoop endp
 main:
     mov ax, @data
     mov ds, ax
@@ -50,14 +29,12 @@ main:
     int 10h
 
     
-    ; init the first displayed map, with one shape
+    ; init the first displayed map Main Loophow to make the movement machanic in tetris?`
     call init_Colors
     call init_Map    
     
     call gameLoop
 
-    xor ax,ax
-    int 16h
 exit:
     mov ax, 4c00h
     int 21h

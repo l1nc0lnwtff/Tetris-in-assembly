@@ -31,3 +31,12 @@ Graphics_removeShape MACRO x,y
     push y
     call removeShape
 ENDM
+
+Piece_moveIncrement MACRO pointer
+    push pointer
+    call moveDown
+ENDM
+Piece_moveDecrement MACRO pointer
+    push pointer
+    call moveUp
+ENDM

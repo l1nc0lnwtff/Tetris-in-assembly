@@ -4,3 +4,6 @@ include render\\colors.asm
 include render\\graphics.asm
 include utils\\init.asm
 include utils\\utils.asm
+include piece\\move.asm
+include piece\\input.asm
+include core\\game.asm

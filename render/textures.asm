@@ -1,5 +1,5 @@
 .data
-        ; hardcode offsets for texture 
+    ; hardcode offsets for texture 
     paletteTexture db darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
     db pallete_lightGreen,pallete_green,pallete_green,darkTeal,pallete_lightGreen,pallete_green,pallete_green,darkTeal
     db pallete_green,pallete_green,pallete_green,darkTeal,pallete_green,pallete_green,pallete_green,darkTeal
@@ -9,13 +9,13 @@
     db pallete_green,darkTeal,pallete_green,pallete_green,pallete_green,darkTeal,pallete_green,pallete_green
     db pallete_green,darkTeal,pallete_green,pallete_green,pallete_green,darkTeal,pallete_green,pallete_green
     oShapeTexture db oShapeInside, oShapeInside, oShapeInside, oShapeInside, oShapeInside, oShapeInside, oShapeInside, oShapeInside
-         db oShapeInside, oShapeOutside, oShapeOutside, oShapeOutside, oShapeOutside, oShapeOutside, oShapeOutside, oShapeInside
-         db oShapeInside, oShapeOutside, oShapeInside, oShapeInside, oShapeInside, oShapeInside, oShapeOutside, oShapeInside
-         db oShapeInside, oShapeOutside, oShapeInside, oShapeInside, oShapeInside, oShapeInside, oShapeOutside, oShapeInside
-         db oShapeInside, oShapeOutside, oShapeInside, oShapeInside, oShapeInside, oShapeInside, oShapeOutside, oShapeInside
-         db oShapeInside, oShapeOutside, oShapeInside, oShapeInside, oShapeInside, oShapeInside, oShapeOutside, oShapeInside
-         db oShapeInside, oShapeOutside, oShapeOutside, oShapeOutside, oShapeOutside, oShapeOutside, oShapeOutside, oShapeInside
-         db oShapeInside, oShapeInside, oShapeInside, oShapeInside, oShapeInside, oShapeInside, oShapeInside, oShapeInside
+    db oShapeInside, oShapeOutside, oShapeOutside, oShapeOutside, oShapeOutside, oShapeOutside, oShapeOutside, oShapeInside
+    db oShapeInside, oShapeOutside, oShapeInside, oShapeInside, oShapeInside, oShapeInside, oShapeOutside, oShapeInside
+    db oShapeInside, oShapeOutside, oShapeInside, oShapeInside, oShapeInside, oShapeInside, oShapeOutside, oShapeInside
+    db oShapeInside, oShapeOutside, oShapeInside, oShapeInside, oShapeInside, oShapeInside, oShapeOutside, oShapeInside
+    db oShapeInside, oShapeOutside, oShapeInside, oShapeInside, oShapeInside, oShapeInside, oShapeOutside, oShapeInside
+    db oShapeInside, oShapeOutside, oShapeOutside, oShapeOutside, oShapeOutside, oShapeOutside, oShapeOutside, oShapeInside
+    db oShapeInside, oShapeInside, oShapeInside, oShapeInside, oShapeInside, oShapeInside, oShapeInside, oShapeInside
 .code 
 drawFuncTexture proc
     push bp
