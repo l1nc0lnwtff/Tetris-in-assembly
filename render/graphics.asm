@@ -65,6 +65,7 @@ drawFuncSquare proc
     ret 6
 drawFuncSquare endp
 
+
 Graphics_swapBuffers proc
     pusha
 
@@ -184,3 +185,58 @@ jmpTexture:
     popa
     ret 
 Graphics_DrawMapTiles endp
+
+
+drawRect proc ; function takes x,y,width,height,color
+    push bp
+    mov bp,sp
+    ; define constants for easier refrencing
+    xPos equ [bp + 12]
+    yPos equ [bp + 10]
+    wid equ [bp + 8] ; width reserved word
+    height equ [bp + 6]
+    color equ [bp + 4]
+    ; define locals
+    sub sp,4
+    max_x equ [bp - 2]
+    max_y equ [bp - 4]
+    pusha
+    ; load max values, so we can loop until that last value starting from xPos
+    mov ax, xPos
+    add ax, wid 
+    mov max_x, ax
+    
+    mov ax, yPos
+    add ax, height
+    mov max_y, ax
+
+    mov dx, yPos
+@rectyLoop: ; for each row
+    ; start again each line at the start , kind of a cr
+    mov cx, xPos
+@rectxLoop: ; for each column
+    ; put the block in the frontBuffer
+    mov bx, dx ; row
+    mov ax, dx
+    mov bx, ax
+    shl ax, 8        ; y * 256
+    shl bx, 6        ; y * 64
+    add ax, bx       ;ax =  256y + 64y = 320y
+    add ax, cx       ; 320y + x
+    ; ax stores index   
+    mov si,ax
+    mov ax, color
+    mov frontBuffer[si], al
+    inc cx
+    cmp cx, max_x ; compare current column to last column , while its not continue the loop
+    jnz @rectxLoop
+    inc dx
+    cmp dx, max_y
+    jnz @rectyLoop
+    popa
+    add sp,4
+    pop bp
+    ret 10
+drawRect endp
+
+

@@ -4,16 +4,18 @@ init_Map proc
     mov si, 13 ; index
     xor cx,cx ; amount of rows ( for x in rows)
     lea bx, paletteTexture
+    xor dx,dx
+    
 columns:    
     ; draw the right side
     push ax
     xor ax,ax
-
 rightSide:
     Graphics_DrawSquare ax,cx,greenForSides
     inc ax
-    cmp ax, 13
+    cmp ax, 12
     jnz rightSide
+
     pop ax
     ; draw the pallete on the left side ( border )
     Textures_DrawTexture si,cx,bx
@@ -22,7 +24,8 @@ rightSide:
     add di, 11 ; move to last index
     Textures_DrawTexture di,cx,bx
     push ax
-    mov ax, 15
+    inc di
+    mov ax, 14
     inc di
 leftSide:
     Graphics_DrawSquare di,cx,greenForSides
@@ -31,6 +34,13 @@ leftSide:
     cmp ax, 0
     jnz leftSide
     pop ax
+
+
+    ; multiply current line by 8
+    Graphics_DrawRect 96,dx,6,8,greenForSides ; hardcode it one before the texture , and then leave 2 pixels before it
+    Graphics_DrawRect 202,dx,6,8,greenForSides
+    
+    add dx, 8
     inc cx ; move to next row
     cmp cx, 18
     jnz columns
