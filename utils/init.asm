@@ -37,8 +37,8 @@ leftSide:
 
 
     ; multiply current line by 8
-    Graphics_DrawRect 96,dx,6,8,greenForSides ; hardcode it one before the texture , and then leave 2 pixels before it
-    Graphics_DrawRect 202,dx,6,8,greenForSides
+    Graphics_DrawRect 96,dx,7,8,greenForSides ; hardcode it one before the texture , and then leave 2 pixels before it
+    Graphics_DrawRect 201,dx,7,8,greenForSides
     
     add dx, 8
     inc cx ; move to next row

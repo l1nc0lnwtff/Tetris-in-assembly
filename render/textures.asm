@@ -16,6 +16,15 @@
     db oShapeInside, oShapeOutside, oShapeInside, oShapeInside, oShapeInside, oShapeInside, oShapeOutside, oShapeInside
     db oShapeInside, oShapeOutside, oShapeOutside, oShapeOutside, oShapeOutside, oShapeOutside, oShapeOutside, oShapeInside
     db oShapeInside, oShapeInside, oShapeInside, oShapeInside, oShapeInside, oShapeInside, oShapeInside, oShapeInside
+    
+    zShapeTexture db 0,0,0,0,0,0,0,0
+    db 0,1,1,1,1,1,1,0
+    db 0,1,1,1,1,1,1,0
+    db 0,1,1,0,0,1,1,0
+    db 0,1,1,0,0,1,1,0
+    db 0,1,1,1,1,1,1,0
+    db 0,1,1,1,1,1,1,0
+    db 0,0,0,0,0,0,0,0
 .code 
 drawFuncTexture proc
     push bp

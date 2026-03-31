@@ -8,6 +8,7 @@ game:
     jz skip ; if zf = 1 , means no key is pressed
     ; a key was pressed , remove it from keyboard buffer 
     call Input_keyHandling
+    Graphics_insertShape xPointer,yPointer,oShape
 
 skip:
     cmp [newShape],1

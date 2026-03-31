@@ -44,15 +44,16 @@ moveUp endp
 
 Move_gravityHandling proc 
     
-    cmp [tickCounter],20
+    cmp [tickCounter],10
     jnz skipGravity
     mov [tickCounter],0 ; reset tick counter
     ; move the shape down
-    Collision_checkBorder downKey 
-    cmp [collision], 1
-    je skipGravity ; collision detected
     Graphics_removeShape xPointer,yPointer
+    Collision_bCollision 0,1 
+    cmp [collisionState], 1
+    je skipGravity ; collision detected
     Piece_moveIncrement yPointer
+    
 skipGravity:
     ret 
 Move_gravityHandling endp

@@ -6,16 +6,15 @@ include includes\\header.asm
 .data
     bRunning db 1
     newShape db 0
-    collision db 0
+    collisionState db 0
     tickCounter dw 0
-    oShape equ 1
     
-    O_Xpos db 0,1,0,1  
+    oShape equ 1
+    zShape equ 2
+    
+    O_Xpos db 4,5,4,5  
     O_Ypos db 0,0,1,1
     
-    rightKey equ 9
-    leftKey equ 0
-    downKey equ 17
     
     current_xPos db 4 dup (0)
     current_yPos db 4 dup (0)

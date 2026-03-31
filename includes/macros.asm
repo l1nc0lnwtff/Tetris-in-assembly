@@ -40,9 +40,10 @@ Piece_moveDecrement MACRO pointer
     push pointer
     call moveUp
 ENDM
-Collision_checkBorder MACRO direction
-    push direction
-    call checkBorder
+Collision_bCollision MACRO dX, dY
+    push dX
+    push dY
+    call checkCollision
 ENDM
 Graphics_DrawRect MACRO x,y,width,height,color
     push x

@@ -7,6 +7,9 @@
     
     oShapeOutside equ 255
     oShapeInside equ 244
+
+    zShapeInside equ 254
+    zShapeOutside equ 253
 .code 
 Colors_changeColorFunc proc ; function creates color accourding to given index,r,g,b
     push bp

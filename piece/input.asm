@@ -18,50 +18,48 @@ Input_keyHandling proc
     ; ah contains the scan code, we can for arrow keys and esc
     cmp ah, 1h
     je escapeKey
-    
+
+
     cmp ah, 50h
-    je downKeyLabel
+    je downKey
+
 
     cmp ah, 04dh
-    je rightKeyLabel
+    je rightKey
 
     cmp ah, 04bh
-    je leftKeyLabel
+    je leftKey
+
     
     jmp exitKeyHandling
 
-    ; hardcode for collision, borders for each one so we won't have to loop it 4 times instead of once for all cases and then just compare [bp + 2]
+    ; remove shape -> check collision -> move Down if no collision
 
-
-downKeyLabel:
-
-    Collision_checkBorder downKey ; 2 = downKey , its compared in the collision checkborder to check which border
-    cmp [collision], 1
-    je exitKeyHandling ; collision detected
+downKey:
     Graphics_removeShape xPointer,yPointer
+    Collision_bCollision 0,1 
+    cmp [collisionState], 1
+    je exitKeyHandling ; collision detected
     Piece_moveIncrement yPointer
     jmp exitKeyHandling
-rightKeyLabel:
-    
-    Collision_checkBorder rightKey
-    cmp [collision], 1
-    je exitKeyHandling ; collision detected
+leftKey:
     Graphics_removeShape xPointer,yPointer
-    Piece_moveIncrement xPointer
-    jmp exitKeyHandling
-leftKeyLabel:
-    Collision_checkBorder leftKey
-    cmp [collision], 1
+    Collision_bCollision -1,0 
+    cmp [collisionState], 1
     je exitKeyHandling ; collision detected
-    Graphics_removeShape xPointer,yPointer
     Piece_moveDecrement xPointer
     jmp exitKeyHandling
-    
+rightKey:
+    Graphics_removeShape xPointer,yPointer
+    Collision_bCollision 1,0
+    cmp [collisionState], 1
+    je exitKeyHandling ; collision detected
+    Piece_moveIncrement xPointer
+    jmp exitKeyHandling
 escapeKey:
     mov [bRunning],0
 
 exitKeyHandling:
-    mov [collision], 0
     pop ax
     ret 
-Input_keyHandling endp
+Input_keyHandling endp 
