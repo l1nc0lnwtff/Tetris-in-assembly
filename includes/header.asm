@@ -10,4 +10,5 @@ include utils\\utils.asm
 include piece\\col.asm
 include piece\\move.asm
 include piece\\input.asm
+include piece\\rotate.asm
 include core\\game.asm

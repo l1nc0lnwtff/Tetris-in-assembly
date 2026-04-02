@@ -15,10 +15,9 @@ Input_keyHandling proc
     ; get the scan code , stores it in ax
     xor ax,ax
     int 16h
-    ; ah contains the scan code, we can for arrow keys and esc
+    ; ah contains the scan code, we can for arrow keys and esc, al contains ascii
     cmp ah, 1h
-    je escapeKey
-
+    je escapeKeyMidPoint ; jmp too big 
 
     cmp ah, 50h
     je downKey
@@ -30,11 +29,18 @@ Input_keyHandling proc
     cmp ah, 04bh
     je leftKey
 
-    
+    cmp al, 'z'      ; check scan code
+    je zKey        
     jmp exitKeyHandling
 
     ; remove shape -> check collision -> move Down if no collision
 
+escapeKeyMidPoint:
+    jmp escapeKey
+zKey:
+    Graphics_removeShape xPointer,yPointer
+    call rotatePiece
+    jmp exitKeyHandling
 downKey:
     Graphics_removeShape xPointer,yPointer
     Collision_bCollision 0,1 
@@ -56,6 +62,7 @@ rightKey:
     je exitKeyHandling ; collision detected
     Piece_moveIncrement xPointer
     jmp exitKeyHandling
+
 escapeKey:
     mov [bRunning],0
 

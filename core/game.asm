@@ -40,6 +40,7 @@ continueGameLoop:
     ; put the map stuff on the frontBuffer , and render it 
     call Graphics_DrawMapTiles 
     call Graphics_swapBuffers    
+    
     inc [tickCounter] ; each frame inc the counter
     call utils_Delay ; will delay by 50ms , so that in 1 sec it would go down once ( gravity )
     cmp bRunning,1
