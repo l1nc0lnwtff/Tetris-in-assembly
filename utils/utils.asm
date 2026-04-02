@@ -23,10 +23,16 @@ utils_CopyArray proc
     mov es, ax
     xor ax,ax
     
-    mov si, offset O_Xpos
+    ; contains 1-2
+    mov bl, currentShape
+    xor bh,bh
+    dec bl ; 0-1
+    shl bl,1 ; 2 * currentShape , take the index
+    
+    mov si, xArray[bx]
     mov xPointer, si
     
-    mov si, offset O_Ypos
+    mov si, yArray[bx]
     mov yPointer, si
 
     ; copy x 
@@ -52,3 +58,21 @@ utils_CopyArray proc
     pop ax
     ret 
 utils_CopyArray endp
+
+utils_randomNumber proc
+    pusha
+    ; get sys time
+    xor ax,ax
+    int 1ah
+    ; cx:dx holds clock ticks since midnight
+    mov ax,dx
+    xor dx,dx
+    mov cx, 5
+    div cx  ; dx contains the remainder of the result: "random number"
+    
+    ; mov the random number to currentShape
+    inc dl
+    mov byte ptr [currentShape], dl
+    popa
+    ret 
+utils_randomNumber endp

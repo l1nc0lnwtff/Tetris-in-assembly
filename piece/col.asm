@@ -52,7 +52,7 @@ collisionDetected:
     jmp exitCollision
 collisionDetectedWithNewShape:
     mov byte ptr [collisionState], 1    
-    cmp dY, 0
+    cmp byte ptr dY, 0
     je exitCollision ; the collision would've been with a block on the sides , not the bottom. meaning we can just continue and ignore it
     mov byte ptr [newShape], 1 ; new shape is needed after collision with bottom row, or with a piece
 exitCollision:

@@ -1,6 +1,16 @@
 .code 
 gameLoop proc 
-    
+    push bp
+    mov bp,sp
+    sub sp, 2
+
+    currentShapePush equ [bp - 2]
+    ; first init
+    push ax
+    xor ah,ah
+    mov al, currentShape
+    mov currentShapePush, ax
+    pop ax
 
 game:
     ; check if key pressed -> key handling -> gravity -> render -> repeat
@@ -8,17 +18,25 @@ game:
     jz skip ; if zf = 1 , means no key is pressed
     ; a key was pressed , remove it from keyboard buffer 
     call Input_keyHandling
-    Graphics_insertShape xPointer,yPointer,oShape
+    Graphics_insertShape xPointer,yPointer,currentShapePush
 
 skip:
     cmp [newShape],1
     jnz continueGameLoop
     
+    call utils_randomNumber 
+    ; every time a new shape is required , update the currentShape
+    push ax
+    xor ah,ah
+    mov al, currentShape
+    mov currentShapePush, ax
+    pop ax
     call utils_CopyArray
     mov [newShape],0
 continueGameLoop:
     call Move_gravityHandling ; for now for each 60 frames , in the future with later implemantation 
-    Graphics_insertShape xPointer,yPointer,oShape
+    Graphics_insertShape xPointer,yPointer,currentShapePush
+   
     ; put the map stuff on the frontBuffer , and render it 
     call Graphics_DrawMapTiles 
     call Graphics_swapBuffers    
@@ -28,6 +46,7 @@ continueGameLoop:
     je game
     
 
-
+    add sp,2
+    pop bp
     ret 
 gameLoop endp

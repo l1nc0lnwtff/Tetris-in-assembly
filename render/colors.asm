@@ -10,6 +10,21 @@
 
     zShapeInside equ 254
     zShapeOutside equ 253
+    
+    LShapeInside equ 252
+    LShapeOutside equ 251
+
+    sShapeLight equ 250
+    sShapeLightIsh equ 249
+    sShapeDark equ 248
+    
+    tShapeDark equ 247
+    tShapeLight equ 246
+    tShapeLightIsh equ 245
+    
+    ;    (79,139,115): 1,     # #183442 (dark)
+    ;    (26,54,73): 0   # #e6fbe1 (light)
+
 .code 
 Colors_changeColorFunc proc ; function creates color accourding to given index,r,g,b
     push bp

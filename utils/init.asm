@@ -42,7 +42,7 @@ leftSide:
     
     add dx, 8
     inc cx ; move to next row
-    cmp cx, 18
+    cmp cx, 18  
     jnz columns
     popa
     ret
@@ -59,6 +59,21 @@ init_Colors proc
     ; change colors for Shapes
     Colors_changeColor 6,13,15,oShapeInside
     Colors_changeColor 56,61,55,oShapeOutside
+    
+    Colors_changeColor 5,12,15,zShapeOutside
+    Colors_changeColor 42,50,35,zShapeInside
+
+    Colors_changeColor 19,34,28,LShapeInside
+    Colors_changeColor 6,13,17,LShapeOutside
+
+    Colors_changeColor 5,14,15,sShapeDark
+    Colors_changeColor 21, 34, 33,sShapeLightIsh
+    Colors_changeColor 57,63,58,sShapeLight
+
+    Colors_changeColor 44,50,39,tShapeLightIsh
+    Colors_changeColor 56,61,53, tShapeLight
+    Colors_changeColor 7,13,15,tShapeDark
+    
     ret 
 init_Colors endp
 ; 2 to 17 excluding -> 3 to 16 including -> i have 13 spaces inside 

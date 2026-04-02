@@ -166,12 +166,18 @@ columnsInMap:
     mov dl, shapeMap[si]
     xor dh,dh
     ; draw with the color of map[si], suppose to be some color
-    cmp dx, 1
-    je Texture
+    cmp dx, 0
+    jne Texture
     Graphics_DrawSquare bx,cx,dx
     jmp jmpTexture
     ; add one to index and column
 Texture:
+    push bx
+    xor bx,bx
+    mov bl, dl
+    shl bx, 1 ; get index , its dw
+    mov ax, textureArray[bx]
+    pop bx
     Textures_DrawTexture bx,cx,ax
 jmpTexture:
     inc si

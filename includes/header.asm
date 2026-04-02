@@ -1,10 +1,12 @@
+include configs\\shapes.asm
+include configs\\states.asm
+
 include includes\\macros.asm
 include render\\textures.asm
 include render\\colors.asm
 include render\\graphics.asm
 include utils\\init.asm
 include utils\\utils.asm
-
 include piece\\col.asm
 include piece\\move.asm
 include piece\\input.asm
