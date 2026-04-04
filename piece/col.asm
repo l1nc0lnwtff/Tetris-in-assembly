@@ -60,3 +60,48 @@ exitCollision:
     pop bp
     ret 4
 checkCollision endp
+
+checkTileCollision proc
+    push bp
+    mov bp,sp
+    ; define aliases
+    xPoint equ [bp + 10]
+    yPoint equ [bp + 8]
+    distanceX equ [bp + 6]
+    distanceY equ [bp + 4]
+    
+    pusha
+    ; load values
+    mov ax, xPoint
+    mov bx, yPoint
+    ; add offsets 
+    add ax, distanceX
+    add bx, distanceY
+    ; check hardcoded values - floor ceiling asnd borders
+    cmp bx, -1 ; ceiling
+    jle collisionTile
+    cmp bx, 18 ; floor
+    jge collisionTile
+    cmp ax, -1 ; left border
+    jle collisionTile
+    cmp ax, 10 ; right border
+    jge collisionTile
+
+    ; check for points on the graph ( 10y + x index)
+    mov cx, bx ; copy y point
+    shl cx, 1 ; 2y
+    shl bx, 3 ; 8y
+    add bx,cx ; 10y 
+    add bx, ax ; +x 
+    cmp byte ptr shapeMap[bx], 0 ; check if something is in that position if so , collision 
+    jne collisionTile   
+    ; no collision
+    jmp exitCollisionTile
+
+collisionTile:
+    mov byte ptr [collisionState] , 1
+exitCollisionTile:
+    popa
+    pop bp
+    ret 8
+checkTileCollision endp

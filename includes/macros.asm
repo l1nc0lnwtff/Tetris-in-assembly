@@ -45,6 +45,13 @@ Collision_bCollision MACRO dX, dY
     push dY
     call checkCollision
 ENDM
+Collision_tileCollision MACRO xPoint, yPoint,dX, dY
+    push xPoint
+    push yPoint
+    push dX
+    push dY
+    call checkTileCollision
+ENDM
 Graphics_DrawRect MACRO x,y,width,height,color
     push x
     push y
@@ -52,4 +59,8 @@ Graphics_DrawRect MACRO x,y,width,height,color
     push height
     push color
     call drawRect
+ENDM
+Piece_rotatePiece MACRO direction
+    push direction
+    call rotatePiece
 ENDM

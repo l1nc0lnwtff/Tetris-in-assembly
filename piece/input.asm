@@ -31,6 +31,8 @@ Input_keyHandling proc
 
     cmp al, 'z'      ; check scan code
     je zKey        
+    cmp al, 'x'
+    je xKey
     jmp exitKeyHandling
 
     ; remove shape -> check collision -> move Down if no collision
@@ -39,7 +41,11 @@ escapeKeyMidPoint:
     jmp escapeKey
 zKey:
     Graphics_removeShape xPointer,yPointer
-    call rotatePiece
+    Piece_rotatePiece 0 ; counter-clockwise
+    jmp exitKeyHandling
+xKey:
+    Graphics_removeShape xPointer, yPointer
+    Piece_rotatePiece 1 ; clockwise
     jmp exitKeyHandling
 downKey:
     Graphics_removeShape xPointer,yPointer
