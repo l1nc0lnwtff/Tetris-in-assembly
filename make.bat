@@ -16,6 +16,7 @@ copy /Y main.exe bin\
 REM delete the object and exec in the current dir
 del main.obj
 del main.exe
+del main.map 
 
 REM Run the executable from bin
 bin\main.exe

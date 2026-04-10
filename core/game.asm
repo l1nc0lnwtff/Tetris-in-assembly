@@ -32,6 +32,7 @@ skip:
     mov currentShapePush, ax
     pop ax
     call utils_CopyArray
+    call Logic_checkLines
     mov [newShape],0
 continueGameLoop:
     call Move_gravityHandling ; for now for each 60 frames , in the future with later implemantation 

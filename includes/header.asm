@@ -1,6 +1,6 @@
 include configs\\shapes.asm
 include configs\\states.asm
-
+include logic\\clear.asm
 include includes\\macros.asm
 include render\\textures.asm
 include render\\colors.asm
