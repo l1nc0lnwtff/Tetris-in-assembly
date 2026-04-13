@@ -23,7 +23,7 @@ main:
     call init_Colors
     call init_Map    
     call utils_randomNumber 
-    call utils_CopyArray
+   call utils_CopyArray
    
     call gameLoop
 

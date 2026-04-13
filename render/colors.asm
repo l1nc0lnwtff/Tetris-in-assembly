@@ -21,7 +21,7 @@
     tShapeDark equ 247
     tShapeLight equ 246
     tShapeLightIsh equ 245
-    
+    animationColor equ 243
     ;    (79,139,115): 1,     # #183442 (dark)
     ;    (26,54,73): 0   # #e6fbe1 (light)
 

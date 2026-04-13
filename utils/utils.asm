@@ -76,3 +76,35 @@ utils_randomNumber proc
     popa
     ret 
 utils_randomNumber endp
+
+utils_DelayByMillisecond proc
+    push bp 
+    mov bp, sp
+
+    push ax
+    push bx
+    push cx
+    push dx
+
+    mov ax, [bp+4]        ; argument (1,2,3)
+
+    mov bx, 30000         ; multiplier
+    mul bx                ; DX:AX = AX * BX
+
+    ; we only care about AX (result fits: max 90000)
+    mov bx, ax            ; BX = 30000 * arg
+
+    mov dx, 8270h         ; base value (33392)
+    sub dx, bx            ; dx = base - (30000 * arg)
+
+    mov ah, 86h
+    mov cx, 3h
+    int 15h
+
+    pop dx
+    pop cx
+    pop bx
+    pop ax
+    pop bp
+    ret 2                 ; clean argument
+utils_DelayByMillisecond endp

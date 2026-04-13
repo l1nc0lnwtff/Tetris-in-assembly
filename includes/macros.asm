@@ -60,7 +60,13 @@ Graphics_DrawRect MACRO x,y,width,height,color
     push color
     call drawRect
 ENDM
+
 Piece_rotatePiece MACRO direction
     push direction
     call rotatePiece
+ENDM
+
+Animation_Delay MACRO division
+    push division
+    call utils_DelayByMillisecond
 ENDM

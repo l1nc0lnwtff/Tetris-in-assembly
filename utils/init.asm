@@ -74,6 +74,7 @@ init_Colors proc
     Colors_changeColor 56,61,53, tShapeLight
     Colors_changeColor 7,13,15,tShapeDark
     
+    Colors_changeColor 47,51,44,animationColor
     ret 
 init_Colors endp
 ; 2 to 17 excluding -> 3 to 16 including -> i have 13 spaces inside 

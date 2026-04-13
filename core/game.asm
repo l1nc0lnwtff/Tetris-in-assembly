@@ -25,12 +25,14 @@ skip:
     jnz continueGameLoop
     
     call utils_randomNumber 
+    
     ; every time a new shape is required , update the currentShape
     push ax
     xor ah,ah
     mov al, currentShape
     mov currentShapePush, ax
     pop ax
+    call Animation_clearLine
     call utils_CopyArray
     call Logic_checkLines
     mov [newShape],0

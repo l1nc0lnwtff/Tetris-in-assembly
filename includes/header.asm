@@ -5,6 +5,7 @@ include includes\\macros.asm
 include render\\textures.asm
 include render\\colors.asm
 include render\\graphics.asm
+include logic\\anim.asm
 include utils\\init.asm
 include utils\\utils.asm
 include piece\\col.asm
