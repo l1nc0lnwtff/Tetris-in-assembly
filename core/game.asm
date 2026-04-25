@@ -18,23 +18,25 @@ game:
     jz skip ; if zf = 1 , means no key is pressed
     ; a key was pressed , remove it from keyboard buffer 
     call Input_keyHandling
+    call Input_flushKeyboard
     Graphics_insertShape xPointer,yPointer,currentShapePush
-
 skip:
     cmp [newShape],1
     jnz continueGameLoop
-    
+
+    ; spawn new piece logic and check clear lines
     call utils_randomNumber 
+    call utils_CopyArray
     
-    ; every time a new shape is required , update the currentShape
     push ax
     xor ah,ah
     mov al, currentShape
     mov currentShapePush, ax
     pop ax
+    
     call Animation_clearLine
-    call utils_CopyArray
     call Logic_checkLines
+    call Input_flushKeyboard
     mov [newShape],0
 continueGameLoop:
     call Move_gravityHandling ; for now for each 60 frames , in the future with later implemantation 

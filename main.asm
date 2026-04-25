@@ -1,14 +1,14 @@
 .286
 .model small
 .stack 100h
-include includes\\header.asm
+include includes\header.asm
 
 .data
     ;index = 10y + x
     shapeMap         db 10 * 18 dup (0) ; excluding borders 
     ; index = 320y + x 
     frontBuffer db 320 * 200 dup (0) ; program will be double buffered, meaning when you render -> copy to map -> do each pixel in frontbuffer -> 2 bytes each copy to map. ( faster , and no flickering)
-    
+
 .code
 main:
     mov ax, @data
@@ -20,13 +20,17 @@ main:
 
     
     ; init the first displayed map Main Loophow to 
-    call init_Colors
-    call init_Map    
-    call utils_randomNumber 
-   call utils_CopyArray
-   
-    call gameLoop
+    call LoadBmp
+    xor ax,ax
+    int 16h
 
+    
+    call init_Map
+    call init_Colors
+    call utils_randomNumber 
+    call utils_CopyArray
+    call gameLoop
+    
 exit:
     mov ax, 4c00h
     int 21h

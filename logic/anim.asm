@@ -24,7 +24,7 @@ forEachLine:
     add bx, cx
 forEachColumn:
     ; bx contains start of line , just increment every time
-    cmp shapeMap[bx],0
+    cmp shapeMap[bx], 0
     je emptyLine
     
     inc bx 

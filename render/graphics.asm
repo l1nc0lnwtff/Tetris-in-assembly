@@ -5,6 +5,7 @@ drawFuncSquare proc
     ; aliases for the passed arguments , will receive xPos and yPos in 25* 40 format , so mul by 8  to reach  200 * 320
     xPos equ [bp + 8]
     yPos equ [bp + 6]
+    add word ptr yPos, 2
     shl word ptr yPos, 3
     shl word ptr xPos, 3
     color equ [bp + 4]
@@ -158,9 +159,8 @@ Graphics_DrawMapTiles proc
     ; init loop base values
     xor cx,cx ; for 18 rows
     xor si,si  ; index counter
-    lea ax, oShapeTexture
 rowInMap:
-    mov bx, 14 ; start value
+    mov bx, 12 ; start value
 columnsInMap:
     ; get whatever is inside the map.
     mov dl, shapeMap[si]
@@ -168,7 +168,7 @@ columnsInMap:
     ; draw with the color of map[si], suppose to be some color
     cmp dx, 0
     jne Texture
-    Graphics_DrawSquare bx,cx,dx
+    Graphics_DrawSquare bx,cx,defaultColor
     jmp jmpTexture
     ; add one to index and column
 Texture:
@@ -182,7 +182,7 @@ Texture:
 jmpTexture:
     inc si
     inc bx
-    cmp bx, 24 ; 13 - 3 = 10, do the loop for each col
+    cmp bx, 22 ; 13 - 3 = 10, do the loop for each col
     jnz columnsInMap ; move to next row
     ; if last row (0 - 24), exit
     inc cx
@@ -199,6 +199,7 @@ drawRect proc ; function takes x,y,width,height,color
     ; define constants for easier refrencing
     xPos equ [bp + 12]
     yPos equ [bp + 10]
+    add word ptr yPos, 16
     wid equ [bp + 8] ; width reserved word
     height equ [bp + 6]
     color equ [bp + 4]

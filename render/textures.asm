@@ -63,6 +63,7 @@ drawFuncTexture proc
     mov bp, sp
     xPos   equ [bp + 8]
     yPos   equ [bp + 6]
+    add word ptr yPos, 2
     texPtr equ [bp + 4]
     ; only yPos because we need to do an entire row of pixels between texture and row
     shl word ptr yPos, 3

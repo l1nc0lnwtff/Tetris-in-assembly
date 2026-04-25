@@ -1,27 +1,27 @@
 .data
-    darkTeal equ 19
-    pallete_lightGreen equ 150
-    pallete_green equ 121
-    greenForSides equ 190
-    defaultColor equ 0
+    darkTeal equ 201
+    pallete_lightGreen equ 202
+    pallete_green equ 203
+    greenForSides equ 204
+    defaultColor equ 205
     
-    oShapeOutside equ 255
-    oShapeInside equ 244
+    oShapeOutside equ 206
+    oShapeInside equ 207
 
-    zShapeInside equ 254
-    zShapeOutside equ 253
+    zShapeInside equ 208
+    zShapeOutside equ 209
     
-    LShapeInside equ 252
-    LShapeOutside equ 251
+    LShapeInside equ 210
+    LShapeOutside equ 211
 
-    sShapeLight equ 250
-    sShapeLightIsh equ 249
-    sShapeDark equ 248
+    sShapeLight equ 212
+    sShapeLightIsh equ 213
+    sShapeDark equ 214
     
-    tShapeDark equ 247
-    tShapeLight equ 246
-    tShapeLightIsh equ 245
-    animationColor equ 243
+    tShapeDark equ 215
+    tShapeLight equ 216
+    tShapeLightIsh equ 217
+    animationColor equ 218
     ;    (79,139,115): 1,     # #183442 (dark)
     ;    (26,54,73): 0   # #e6fbe1 (light)
 
@@ -34,12 +34,28 @@ Colors_changeColorFunc proc ; function creates color accourding to given index,r
     blue equ [bp + 6]
     green equ [bp + 4]
     pusha
-    mov ax, 1010h
-    mov bx, index 
-    mov dh, red 
-    mov ch, green 
-    mov cl, blue 
-    int 10h
+    
+    mov dx, 3c8h ; vga pallete write port
+    mov al, index 
+
+    out dx, al ; send index
+
+    inc dx ; go to data prot
+    mov al, red
+    shr al, 2
+    out dx, al
+
+    mov al, green
+    shr al, 2
+
+    out dx, al
+
+    mov al, blue
+    shr al, 2
+
+    out dx, al
+
+    
     popa
     pop bp
     ret 8

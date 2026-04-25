@@ -6,11 +6,11 @@ utils_Delay proc
     push dx
     mov ah, 86h
     xor cx,cx
-    mov dx, 0C350h
+    mov dx, 2710h ; 10ms
     int 15h
     pop dx
     pop cx
-    pop dx
+    pop ax
     ret 
 utils_Delay endp
 

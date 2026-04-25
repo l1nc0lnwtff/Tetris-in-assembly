@@ -9,7 +9,14 @@ Input_iskeyPressed proc  ; function will return zf = 1 if a key was pressed , ot
     ret
 Input_iskeyPressed endp
 
-
+Input_flushKeyboard proc
+    push ax
+    mov ah,0ch
+    xor al,al
+    int 21h
+    pop ax
+    ret 
+Input_flushKeyboard endp
 Input_keyHandling proc
     push ax
     ; get the scan code , stores it in ax

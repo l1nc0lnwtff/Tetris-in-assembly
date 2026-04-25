@@ -44,7 +44,7 @@ moveUp endp
 
 Move_gravityHandling proc 
     
-    cmp [tickCounter],10
+    cmp [tickCounter],30
     jnz skipGravity
     mov [tickCounter],0 ; reset tick counter
     ; move the shape down
