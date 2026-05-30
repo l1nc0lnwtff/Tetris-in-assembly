@@ -59,7 +59,7 @@ forEachRowAnimation:
     mov di,si
     shl di, 1 ; get offset
     mov ax, ss:[bp - 10 + di]
-    mov bx, 14
+    mov bx, 12
     mov cx, 10
 forColumnAnimation:
     Graphics_DrawSquare bx, ax , animationColor

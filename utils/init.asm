@@ -1,11 +1,11 @@
 .code
 init_Map proc
     pusha
-    mov si, 13 ; index
+    mov si, 11 ; index
     xor cx,cx ; amount of rows ( for x in rows)
     lea bx, paletteTexture
     xor dx,dx
-    
+    call initScore
 columns:    
     ; draw the right side
     push ax
@@ -16,15 +16,15 @@ columns:
     ; cx * 8 
     mov dx, cx
     shl dx, 3
-    Graphics_DrawRect 96, dx, 7,8 , greenForSides
-    Graphics_DrawRect 103, dx, 1,8, defaultColor
+    Graphics_DrawRect 80, dx, 7,8 , greenForSides
+    Graphics_DrawRect 87, dx, 1,8, defaultColor
     Textures_DrawTexture si,cx,bx
+    
     ; add an offset from first pallete and draw right side ( border )
     mov di,si 
     add di, 11 ; move to last index
     Textures_DrawTexture di,cx,bx
-
-    
+    inc di
     add dx, 8
     inc cx ; move to next row
     cmp cx, 18  
@@ -36,6 +36,8 @@ init_Map endp
 init_Colors proc
     ;set colors for borders 
     Colors_changeColor 31,48,59,darkTeal
+    Colors_changeColor 97,147,118,frameScoreColor
+
     Colors_changeColor 221,249,226,pallete_lightGreen
     Colors_changeColor 167,200,155,pallete_green
     ; change default color on screen to be yellow-ish
@@ -63,3 +65,35 @@ init_Colors proc
     ret 
 init_Colors endp
 ; 2 to 17 excluding -> 3 to 16 including -> i have 13 spaces inside 
+
+initScore proc
+    ; draws the frame and "Score"
+    pusha 
+    lea bx, Score_LeftTopFrame
+    Textures_DrawTexture 23,0,bx
+    lea bx, Score_VerticalRightFrame
+    Textures_DrawTexture 23,1,bx
+    lea bx, Score_LeftBottomFrame
+    Textures_DrawTexture 23,2,bx
+    lea bx, Score_BottomLeftFrame
+    Textures_DrawTexture 29,2,bx
+    lea bx, sLetter
+    Graphics_drawLetter 100,100,bx
+    lea bx, Score_MiddleRightFrame
+    Textures_DrawTexture 29,1,bx
+    mov si, 24
+    lea bx, Score_topMiddleFrame
+    mov cx,5
+topFrameMiddle:
+    lea bx, Score_topMiddleFrame
+    Textures_DrawTexture si,0,bx
+    lea bx, Score_MiddleBottomFrame
+    Textures_DrawTexture si,2,bx
+    inc si
+    loop topFrameMiddle
+    lea bx, Score_RightTopFrame
+    Textures_DrawTexture si,0,bx
+    
+    popa
+    ret 
+initScore endp

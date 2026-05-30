@@ -22,6 +22,7 @@
     tShapeLight equ 216
     tShapeLightIsh equ 217
     animationColor equ 218
+    frameScoreColor equ 219
     ;    (79,139,115): 1,     # #183442 (dark)
     ;    (26,54,73): 0   # #e6fbe1 (light)
 

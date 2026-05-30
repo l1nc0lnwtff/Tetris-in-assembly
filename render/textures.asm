@@ -55,8 +55,81 @@
     db tShapeDark, tShapeLightIsh, tShapeLightIsh, tShapeLightIsh, tShapeLightIsh, tShapeLightIsh, tShapeLightIsh, tShapeDark
     db tShapeDark, tShapeDark, tShapeDark, tShapeDark, tShapeDark, tShapeDark, tShapeDark, tShapeDark
     
+    Score_LeftTopFrame db defaultcolor,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+    db defaultcolor,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+    db defaultcolor,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+    db defaultcolor,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+    db defaultcolor,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+    db defaultcolor,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,defaultcolor,defaultcolor
+    db defaultcolor,darkTeal,darkTeal,darkTeal,darkTeal,defaultcolor,defaultcolor,frameScoreColor
+    db defaultcolor,darkTeal,darkTeal,darkTeal,darkTeal,defaultcolor,frameScoreColor,frameScoreColor
+
+    Score_topMiddleFrame db darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+    db darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+    db darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+    db darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+    db darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+    db defaultcolor,defaultcolor,defaultcolor,defaultcolor,defaultcolor,defaultcolor,defaultcolor,defaultcolor
+    db frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor
+    db defaultcolor,defaultcolor,defaultcolor,defaultcolor,defaultcolor,defaultcolor,defaultcolor,defaultcolor
+
+    Score_RightTopFrame db darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+    db darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+    db darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+    db darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+    db darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+    db defaultcolor,defaultcolor,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+    db frameScoreColor,defaultcolor,defaultcolor,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+    db frameScoreColor,frameScoreColor,defaultcolor,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+
+    Score_VerticalRightFrame db defaultcolor,darkTeal,darkTeal,darkTeal,darkTeal,defaultcolor,frameScoreColor,defaultcolor
+    db defaultcolor,darkTeal,darkTeal,darkTeal,darkTeal,defaultcolor,frameScoreColor,defaultcolor
+    db defaultcolor,darkTeal,darkTeal,darkTeal,darkTeal,defaultcolor,frameScoreColor,defaultcolor
+    db defaultcolor,darkTeal,darkTeal,darkTeal,darkTeal,defaultcolor,frameScoreColor,defaultcolor
+    db defaultcolor,darkTeal,darkTeal,darkTeal,darkTeal,defaultcolor,frameScoreColor,defaultcolor
+    db defaultcolor,defaultcolor,defaultcolor,defaultcolor,defaultcolor,defaultcolor,frameScoreColor,defaultcolor
+    db defaultcolor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor,defaultcolor,frameScoreColor,defaultcolor
+    db defaultcolor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor,defaultcolor,frameScoreColor,defaultcolor
+
+    Score_LeftBottomFrame db defaultcolor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor,defaultcolor,frameScoreColor,frameScoreColor
+    db defaultcolor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor,defaultcolor,defaultcolor,frameScoreColor
+    db defaultcolor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor,defaultcolor,defaultcolor
+    db defaultcolor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor
+    db defaultcolor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor
+    db defaultcolor,defaultcolor,defaultcolor,defaultcolor,defaultcolor,defaultcolor,defaultcolor,defaultcolor
+    db defaultcolor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor
+    db defaultcolor,defaultcolor,defaultcolor,defaultcolor,defaultcolor,defaultcolor,defaultcolor,defaultcolor
+    
+    Score_MiddleBottomFrame db defaultcolor,defaultcolor,defaultcolor,defaultcolor,defaultcolor,defaultcolor,defaultcolor,defaultcolor
+    db frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor
+    db defaultcolor,defaultcolor,defaultcolor,defaultcolor,defaultcolor,defaultcolor,defaultcolor,defaultcolor
+    db frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor
+    db frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor
+    db defaultcolor,defaultcolor,defaultcolor,defaultcolor,defaultcolor,defaultcolor,defaultcolor,defaultcolor
+    db frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor
+    db defaultcolor,defaultcolor,defaultcolor,defaultcolor,defaultcolor,defaultcolor,defaultcolor,defaultcolor
+    
+    Score_BottomLeftFrame db frameScoreColor,frameScoreColor,defaultcolor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor
+    db frameScoreColor,defaultcolor,defaultcolor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor
+    db defaultcolor,defaultcolor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor
+    db frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor
+    db frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor
+    db defaultcolor,defaultcolor,defaultcolor,defaultcolor,defaultcolor,defaultcolor,defaultcolor,defaultcolor
+    db frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor
+    db defaultcolor,defaultcolor,defaultcolor,defaultcolor,defaultcolor,defaultcolor,defaultcolor,defaultcolor
+    
+    Score_MiddleRightFrame db defaultColor,frameScoreColor,defaultColor,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+    db defaultColor,frameScoreColor,defaultColor,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+    db defaultColor,frameScoreColor,defaultColor,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+    db defaultColor,frameScoreColor,defaultColor,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+    db defaultColor,frameScoreColor,defaultColor,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+    db defaultColor,frameScoreColor,defaultColor,defaultColor,defaultColor,defaultColor,defaultColor,defaultColor
+    db defaultColor,frameScoreColor,defaultColor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor
+    db defaultColor,frameScoreColor,defaultColor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor
+
     textureArray dw 0, offset oShapeTexture, offset zShapeTexture, offset lShapeTexture , offset sShapeTexture, offset tShapeTexture
 
+    sLetter db 00h, 3Ch, 60h, 3Ch, 1Eh, 4Ch, 3Ch, 00h
 .code 
 drawFuncTexture proc
     push bp
@@ -69,7 +142,7 @@ drawFuncTexture proc
     shl word ptr yPos, 3
     shl word ptr xPos, 3
     sub sp, 4
-    pusha
+    pusha 
 
     max_x equ [bp - sShapeLightIsh]
     max_y equ [bp - 4]
