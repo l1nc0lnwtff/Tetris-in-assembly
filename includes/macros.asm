@@ -1,4 +1,4 @@
-.code 
+.code
 Graphics_DrawSquare MACRO x,y,color
     push x
     push y
@@ -15,15 +15,15 @@ Colors_changeColor MACRO red,green,blue,index
     push index
     push red
     push blue
-    push green 
+    push green
     call Colors_changeColorFunc
 ENDM
 
-Graphics_insertShape MACRO x,y, Shape 
+Graphics_insertShape MACRO x,y, Shape
     push Shape
     push x
     push y
-    call insertShape 
+    call insertShape
 ENDM
 
 Graphics_removeShape MACRO x,y
@@ -76,3 +76,16 @@ Image_RenderBmpImage MACRO nameOfFile
     call showBmpImage
 ENDM
 
+Textures_printLetter macro xPos,yPos,letter
+    push xPos ; bp + 8
+    push yPos ; bp + 6
+    push letter ; bp + 4
+    call printLetter
+endm
+
+Utils_SaveToFrontBuffer macro xPos,yPos,value
+    push xPos ; bp + 8
+    push yPos ; bp + 6
+    push value ; bp + 4
+    call saveToFrontBuffer
+endm

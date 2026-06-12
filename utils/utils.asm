@@ -1,4 +1,4 @@
-.code 
+.code
 
 utils_Delay proc
     push ax
@@ -11,7 +11,7 @@ utils_Delay proc
     pop dx
     pop cx
     pop ax
-    ret 
+    ret
 utils_Delay endp
 
 utils_CopyArray proc
@@ -22,20 +22,20 @@ utils_CopyArray proc
     mov ax, ds
     mov es, ax
     xor ax,ax
-    
+
     ; contains 1-2
     mov bl, currentShape
     xor bh,bh
     dec bl ; 0-1
     shl bl,1 ; 2 * currentShape , take the index
-    
+
     mov si, xArray[bx]
     mov xPointer, si
-    
+
     mov si, yArray[bx]
     mov yPointer, si
 
-    ; copy x 
+    ; copy x
     mov cx, 2
     mov si, xPointer
     lea di, current_xPos
@@ -48,7 +48,7 @@ utils_CopyArray proc
     ; update ptr to point to current x and current y
     mov si, offset current_xPos
     mov xPointer, si
-    
+
     mov si, offset current_yPos
     mov yPointer, si
 
@@ -56,7 +56,7 @@ utils_CopyArray proc
     pop di
     pop es
     pop ax
-    ret 
+    ret
 utils_CopyArray endp
 
 utils_randomNumber proc
@@ -69,16 +69,16 @@ utils_randomNumber proc
     xor dx,dx
     mov cx, 5
     div cx  ; dx contains the remainder of the result: "random number"
-    
+
     ; mov the random number to currentShape
     inc dl
     mov byte ptr [currentShape], dl
     popa
-    ret 
+    ret
 utils_randomNumber endp
 
 utils_DelayByMillisecond proc
-    push bp 
+    push bp
     mov bp, sp
 
     push ax
@@ -108,3 +108,27 @@ utils_DelayByMillisecond proc
     pop bp
     ret 2                 ; clean argument
 utils_DelayByMillisecond endp
+
+saveToFrontBuffer proc
+    push bp
+    mov bp, sp
+    pusha
+
+    mov ax, [bp + 4]      ; value
+    mov cx, [bp + 6]      ; yPos
+    mov dx, [bp + 8]      ; xPos
+
+    mov bx, cx
+    shl cx, 6
+    shl bx, 8
+    add cx, bx
+
+    add dx, cx
+    mov di, dx
+
+    mov [frontBuffer + di], al
+
+    popa
+    pop bp
+    ret 6
+saveToFrontBuffer endp

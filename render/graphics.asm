@@ -1,5 +1,5 @@
 .code
-drawFuncSquare proc 
+drawFuncSquare proc
     push bp
     mov bp,sp
     ; aliases for the passed arguments , will receive xPos and yPos in 25* 40 format , so mul by 8  to reach  200 * 320
@@ -34,7 +34,7 @@ drawFuncSquare proc
     push cx
     push bx
     push si
-    
+
     mov bx, dx ; row
     mov ax, dx
     mov bx, ax
@@ -45,12 +45,12 @@ drawFuncSquare proc
     ; ax stores index
     mov si,ax ; ax can't access ds
     mov ax, color
-    mov frontBuffer[si], al 
+    mov frontBuffer[si], al
     pop si
-    pop bx 
+    pop bx
     pop cx
     pop ax
-    inc cx 
+    inc cx
     ; for x in arr
     cmp cx, max_x
     jnz @xLoop
@@ -59,7 +59,7 @@ drawFuncSquare proc
     ; compare current value to max value
     cmp dx, max_y
     jnz @yLoop
-    
+
     popa
     add sp,4
     pop bp
@@ -89,7 +89,7 @@ insertShape proc
     push bp
     mov bp,sp
     pusha
-    ; define parameters 
+    ; define parameters
     xPtr equ ss:[bp + 6]
     yPtr equ ss:[bp + 4]
     shape equ ss:[bp + 8] ; represents a number , so when printing we will know what color to use (later a texture)
@@ -108,24 +108,24 @@ putInMap:
     shl bx, 1 ; 2x
     add bx, ax ; 8y + 2y = 10y
     ; ax stores 10bx
-    add bl, byte ptr [di] 
+    add bl, byte ptr [di]
     ; bx = 10y + x which is to calculate the index we should put the square in.
     mov ax, shape ; can't move mem to mem
     mov byte ptr shapeMap[bx], al
     inc si
     inc di
     loop putInMap
-    
+
     popa
     pop bp
     ret 6
 insertShape endp
 
-removeShape proc 
+removeShape proc
     push bp
     mov bp,sp
     pusha
-    ; define parameters 
+    ; define parameters
     xPtr equ ss:[bp + 6]
     yPtr equ ss:[bp + 4]
     ; copy the xPos and yPos in the array to the map
@@ -143,17 +143,17 @@ removeFromMap:
     shl bx, 1 ; 2x
     add bx, ax ; 8y + 2y = 10y
     ; ax stores 10bx
-    add bl, byte ptr [di] 
+    add bl, byte ptr [di]
     ; bx = 10y + x which is to calculate the index we should put the square in.
     mov byte ptr shapeMap[bx], 0 ; 0 -> no shape
     inc si
     inc di
     loop removeFromMap
-    
+
     popa
     pop bp
     ret 4
-removeShape endp 
+removeShape endp
 Graphics_DrawMapTiles proc
     pusha
     ; init loop base values
@@ -189,7 +189,7 @@ jmpTexture:
     cmp cx, 18
     jnz rowInMap
     popa
-    ret 
+    ret
 Graphics_DrawMapTiles endp
 
 
@@ -210,9 +210,9 @@ drawRect proc ; function takes x,y,width,height,color
     pusha
     ; load max values, so we can loop until that last value starting from xPos
     mov ax, xPos
-    add ax, wid 
+    add ax, wid
     mov max_x, ax
-    
+
     mov ax, yPos
     add ax, height
     mov max_y, ax
@@ -230,7 +230,7 @@ drawRect proc ; function takes x,y,width,height,color
     shl bx, 6        ; y * 64
     add ax, bx       ;ax =  256y + 64y = 320y
     add ax, cx       ; 320y + x
-    ; ax stores index   
+    ; ax stores index
     mov si,ax
     mov ax, color
     mov frontBuffer[si], al
@@ -245,5 +245,3 @@ drawRect proc ; function takes x,y,width,height,color
     pop bp
     ret 10
 drawRect endp
-
-

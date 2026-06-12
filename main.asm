@@ -5,10 +5,11 @@ include includes\header.asm
 
 .data
     ;index = 10y + x
-    shapeMap         db 10 * 18 dup (0) ; excluding borders 
-    ; index = 320y + x 
+    shapeMap         db 10 * 18 dup (0) ; excluding borders
+    ; index = 320y + x
     frontBuffer db 320 * 200 dup (0) ; program will be double buffered, meaning when you render -> copy to map -> do each pixel in frontbuffer -> 2 bytes each copy to map. ( faster , and no flickering)
-
+    ; Variable to hold the score
+    Score db 0
 .code
 main:
     mov ax, @data
@@ -18,21 +19,21 @@ main:
     mov al, 13h
     int 10h
 
-    
-    ; init the first displayed map Main Loophow to 
+
+    ; init the first displayed map Main Loophow to
     call LoadBmp
     xor ax,ax
     int 16h
 
-    
+
     call init_Map
     call init_Colors
-    call utils_randomNumber 
+    call utils_randomNumber
     call utils_CopyArray
     call gameLoop
-    
+
 exit:
     mov ax, 4c00h
     int 21h
 
-end main    
+end main

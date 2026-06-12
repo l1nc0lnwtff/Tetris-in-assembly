@@ -1,0 +1,10 @@
+Error: Group DGROUP exceeds 64K
+
+ Start  Stop   Length Name               Class
+
+ 00000H 009E8H 009E9H _TEXT              CODE
+ 009F0H 10906H 0FF17H _DATA              DATA
+ 10910H 10A0FH 00100H STACK              STACK
+ 10A70H 10F34H 004C5H BMP_DATA           
+
+
