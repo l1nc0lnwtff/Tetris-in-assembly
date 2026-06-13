@@ -3,7 +3,7 @@ init_Map proc
     pusha
     mov si, 11 ; index
     xor cx,cx ; amount of rows ( for x in rows)
-    lea bx, paletteTexture
+    mov bx, offset paletteTexture
     xor dx,dx
     call initScore
 columns:
@@ -70,47 +70,41 @@ initScore proc
     ; draws the frame and "Score"
     pusha
     ;score
+    lea bx, ScoreArray
+
+    mov cx, 5
+    mov si,24
+ScoreLoop:
+    mov ax, [bx]
+    Textures_printLetter si,1,ax
+    inc si
+    add bx,2
+    loop ScoreLoop
+
     lea bx, sLetter
-    Textures_printLetter 24,1,di
+    Textures_printLetter 24,1,bx
 
-    lea bx, cLetter
-    Textures_printLetter 25,1,di
-
-
-    lea bx, cLetter
-    Textures_printLetter 26,1,di
-
-    lea bx, oLetter
-    Textures_printLetter 27,1,di
-
-    lea bx, rLetter
-    Textures_printLetter 28,1,di
-
-    lea bx, eLetter
-    Textures_printLetter 29,1,di
-
-
-    lea bx, Score_LeftTopFrame
+    mov bx, offset Score_LeftTopFrame
     Textures_DrawTexture 23,0,bx
-    lea bx, Score_VerticalRightFrame
+    mov bx, offset Score_VerticalRightFrame
     Textures_DrawTexture 23,1,bx
-    lea bx, Score_LeftBottomFrame
+    mov bx, offset Score_LeftBottomFrame
     Textures_DrawTexture 23,2,bx
-    lea bx, Score_BottomLeftFrame
+    mov bx, offset Score_BottomLeftFrame
     Textures_DrawTexture 29,2,bx
-    lea bx, Score_MiddleRightFrame
+    mov bx, offset Score_MiddleRightFrame
     Textures_DrawTexture 29,1,bx
     mov si, 24
-    lea bx, Score_topMiddleFrame
+    mov bx, offset Score_topMiddleFrame
     mov cx,5
 topFrameMiddle:
-    lea bx, Score_topMiddleFrame
+    mov bx, offset Score_topMiddleFrame
     Textures_DrawTexture si,0,bx
-    lea bx, Score_MiddleBottomFrame
+    mov bx, offset Score_MiddleBottomFrame
     Textures_DrawTexture si,2,bx
     inc si
     loop topFrameMiddle
-    lea bx, Score_RightTopFrame
+    mov bx, offset Score_RightTopFrame
     Textures_DrawTexture si,0,bx
 
     popa

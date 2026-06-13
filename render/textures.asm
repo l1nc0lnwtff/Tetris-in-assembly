@@ -1,5 +1,4 @@
-.data
-    ; hardcode offsets for texture
+TEXTURES SEGMENT PARA PUBLIC
     ; hardcode offsets for texture
     paletteTexture db darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
     db pallete_lightGreen,pallete_green,pallete_green,darkTeal,pallete_lightGreen,pallete_green,pallete_green,darkTeal
@@ -127,8 +126,10 @@
     db defaultColor,frameScoreColor,defaultColor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor
     db defaultColor,frameScoreColor,defaultColor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor
 
-    textureArray dw 0, offset oShapeTexture, offset zShapeTexture, offset lShapeTexture , offset sShapeTexture, offset tShapeTexture
+    textureArray dw 0, offset oShapeTexture, offset zShapeTexture, offset LShapeTexture, offset sShapeTexture, offset tShapeTexture
+TEXTURES ENDS
 
+.data
     zero  db 00000000b,00111100b,01100110b,01101110b,01110110b,01100110b,00111100b,00000000b
     one   db 00000000b,00011000b,00111000b,00011000b,00011000b,00011000b,00111100b,00000000b
     two   db 00000000b,00111100b,01100110b,00000110b,00011100b,00110000b,01111110b,00000000b
@@ -146,7 +147,27 @@
     rLetter db 00000000b,01111100b,01100110b,01100110b,01111100b,01101000b,01100110b,00000000b
     eLetter db 00000000b,01111110b,01100000b,01111100b,01100000b,01100000b,01111110b,00000000b
 
+    ScoreArray dw offset sLetter,offset cLetter,offset oLetter,offset rLetter,offset eLetter
 .code
+getTextureOffset proc
+    push bp
+    mov bp, sp
+    push ds
+    push bx
+    mov ax, TEXTURES
+    mov ds, ax
+    assume ds:TEXTURES
+    mov bl, byte ptr [bp + 4]
+    xor bh, bh
+    shl bx, 1
+    mov ax, textureArray[bx]
+    assume ds:@data
+    pop bx
+    pop ds
+    pop bp
+    ret 2
+getTextureOffset endp
+
 drawFuncTexture proc
     push bp
     mov bp, sp
@@ -159,6 +180,10 @@ drawFuncTexture proc
     shl word ptr xPos, 3
     sub sp, 4
     pusha
+    push es
+
+    mov ax, TEXTURES
+    mov es, ax
 
     max_x equ [bp - sShapeLightIsh]
     max_y equ [bp - 4]
@@ -170,7 +195,7 @@ drawFuncTexture proc
     add ax, 8
     mov max_y, ax
 
-    mov si, texPtr          ; si = pointer to texture data (offset)
+    mov si, texPtr          ; si = offset into TEXTURES segment
     mov dx, yPos
 yLoop:
     mov cx, xPos
@@ -190,7 +215,7 @@ xLoop:
     add ax, cx
     mov di, ax              ; di = offset into frontBuffer
 
-    mov al, byte ptr [si]            ; read one byte from texture
+    mov al, es:[si]         ; read one byte from texture segment
     mov frontBuffer[di], al ; store it
 
     pop si
@@ -208,6 +233,7 @@ xLoop:
     cmp dx, max_y
     jnz yLoop
 
+    pop es
     popa
     add sp, 4
     pop bp

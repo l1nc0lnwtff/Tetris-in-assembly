@@ -24,62 +24,77 @@ Input_keyHandling proc
     int 16h
     ; ah contains the scan code, we can for arrow keys and esc, al contains ascii
     cmp ah, 1h
-    je escapeKeyMidPoint ; jmp too big 
-
-    cmp ah, 50h
-    je downKey
-
-
-    cmp ah, 04dh
-    je rightKey
-
-    cmp ah, 04bh
-    je leftKey
-
-    cmp al, 'z'      ; check scan code
-    je zKey        
-    cmp al, 'x'
-    je xKey
-    jmp exitKeyHandling
-
-    ; remove shape -> check collision -> move Down if no collision
-
-escapeKeyMidPoint:
+    jne checkDownKey
     jmp escapeKey
+
+checkDownKey:
+    cmp ah, 50h
+    jne checkRightKey
+    jmp downKey
+
+checkRightKey:
+    cmp ah, 04dh
+    jne checkLeftKey
+    jmp rightKey
+
+checkLeftKey:
+    cmp ah, 04bh
+    jne checkZKey
+    jmp leftKey
+
+checkZKey:
+    cmp al, 'z'      ; check scan code
+    jne checkXKey
+    jmp zKey
+
+checkXKey:
+    cmp al, 'x'
+    jne noKeyMatch
+    jmp xKey
+
+noKeyMatch:
+    jmp doneKeyHandling
+
 zKey:
     Graphics_removeShape xPointer,yPointer
     Piece_rotatePiece 0 ; counter-clockwise
-    jmp exitKeyHandling
+    jmp doneKeyHandling
 xKey:
     Graphics_removeShape xPointer, yPointer
     Piece_rotatePiece 1 ; clockwise
-    jmp exitKeyHandling
+    jmp doneKeyHandling
 downKey:
     Graphics_removeShape xPointer,yPointer
     Collision_bCollision 0,1 
     cmp [collisionState], 1
-    je exitKeyHandling ; collision detected
+    jne downKeyMove
+    jmp doneKeyHandling
+downKeyMove:
     Piece_moveIncrement yPointer
-    jmp exitKeyHandling
+    jmp doneKeyHandling
 leftKey:
     Graphics_removeShape xPointer,yPointer
     Collision_bCollision -1,0 
     cmp [collisionState], 1
-    je exitKeyHandling ; collision detected
+    jne leftKeyMove
+    jmp doneKeyHandling
+leftKeyMove:
     Piece_moveDecrement xPointer
-    jmp exitKeyHandling
+    jmp doneKeyHandling
 rightKey:
     Graphics_removeShape xPointer,yPointer
     Collision_bCollision 1,0
     cmp [collisionState], 1
-    je exitKeyHandling ; collision detected
+    jne rightKeyMove
+    jmp doneKeyHandling
+rightKeyMove:
     Piece_moveIncrement xPointer
-    jmp exitKeyHandling
+    jmp doneKeyHandling
 
 escapeKey:
     mov [bRunning],0
 
-exitKeyHandling:
+doneKeyHandling:
     pop ax
     ret 
-Input_keyHandling endp 
+Input_keyHandling endp

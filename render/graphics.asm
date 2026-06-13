@@ -173,10 +173,10 @@ columnsInMap:
     ; add one to index and column
 Texture:
     push bx
-    xor bx,bx
-    mov bl, dl
-    shl bx, 1 ; get index , its dw
-    mov ax, textureArray[bx]
+    xor ax, ax
+    mov al, dl
+    push ax
+    call getTextureOffset
     pop bx
     Textures_DrawTexture bx,cx,ax
 jmpTexture:
