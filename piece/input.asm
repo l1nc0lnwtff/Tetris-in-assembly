@@ -1,8 +1,8 @@
-.code 
+.code
 
 Input_iskeyPressed proc  ; function will return zf = 1 if a key was pressed , otherwise zf = 0
 
-    ; make the zf zero 
+    ; make the zf zero
     ; check the keyboard buffer , returns zf = 0 if something is inside otherwise zf = 1
     mov ah, 1
     int 16h
@@ -15,7 +15,7 @@ Input_flushKeyboard proc
     xor al,al
     int 21h
     pop ax
-    ret 
+    ret
 Input_flushKeyboard endp
 Input_keyHandling proc
     push ax
@@ -65,16 +65,17 @@ xKey:
     jmp doneKeyHandling
 downKey:
     Graphics_removeShape xPointer,yPointer
-    Collision_bCollision 0,1 
+    Collision_bCollision 0,1
     cmp [collisionState], 1
     jne downKeyMove
     jmp doneKeyHandling
 downKeyMove:
     Piece_moveIncrement yPointer
+    Score_addScore 1
     jmp doneKeyHandling
 leftKey:
     Graphics_removeShape xPointer,yPointer
-    Collision_bCollision -1,0 
+    Collision_bCollision -1,0
     cmp [collisionState], 1
     jne leftKeyMove
     jmp doneKeyHandling
@@ -96,5 +97,5 @@ escapeKey:
 
 doneKeyHandling:
     pop ax
-    ret 
+    ret
 Input_keyHandling endp

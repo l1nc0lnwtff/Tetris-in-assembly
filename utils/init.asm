@@ -1,11 +1,21 @@
 .code
 init_Map proc
     pusha
+    ; make default colors for where the score will be
+    mov si, 23
+    mov cx, 7
+scoreDefault:
+    Graphics_drawSquare si,3, defaultColor
+    inc si
+    loop scoreDefault
+
     mov si, 11 ; index
     xor cx,cx ; amount of rows ( for x in rows)
     mov bx, offset paletteTexture
     xor dx,dx
     call initScore
+    call initLevel
+    call initLines
 columns:
     ; draw the right side
     push ax
@@ -19,7 +29,6 @@ columns:
     Graphics_DrawRect 80, dx, 7,8 , greenForSides
     Graphics_DrawRect 87, dx, 1,8, defaultColor
     Textures_DrawTexture si,cx,bx
-
     ; add an offset from first pallete and draw right side ( border )
     mov di,si
     add di, 11 ; move to last index
@@ -69,6 +78,16 @@ init_Colors endp
 initScore proc
     ; draws the frame and "Score"
     pusha
+    ; the thing below the score not sure about the names i hate the fucking project
+    lea bx, Score_LeftBelowTheScore
+    Textures_DrawTexture 23,4,bx
+    lea bx, Score_MiddleBelowTheScore
+    mov cx, 6
+    mov si, 24
+BelowMiddle:
+    Textures_DrawTexture si,4,bx
+    inc si
+    loop BelowMiddle
     ;score
     lea bx, ScoreArray
 
@@ -110,3 +129,113 @@ topFrameMiddle:
     popa
     ret
 initScore endp
+
+initLevel proc
+    pusha
+    ; print the level text
+    lea bx, LevelArray
+    mov cx, 5
+    mov si, 24
+LevelPrint:
+    mov ax, [bx]
+    ; 6 row const
+    Textures_printLetter si,6,ax
+    inc si
+    add bx, 2
+    loop LevelPrint
+    ; same texture as Score , apperently?
+    lea bx, Score_LeftTopFrame
+    Textures_DrawTexture 23,5,bx
+    mov si, 24
+    mov cx, 5
+    lea bx, Score_topMiddleFrame
+    ; what am i doing with my life i could've used bmps
+TopOfFrame:
+    Textures_DrawTexture si,5,bx
+    inc si
+    loop TopOfFrame
+
+    lea bx, Score_RightTopFrame
+    Textures_DrawTexture si,5,bx
+
+    lea bx,LevelLines_Rightmiddle
+    Textures_DrawTexture si,6,bx
+    Textures_DrawTexture si,7,bx
+    ; frame conenctor
+    lea bx, Level_ConnectLinesRight
+    Textures_DrawTexture si,8,bx
+
+    lea bx, Level_ConnectLinesMiddle
+    mov cx, 5
+    mov si, 24
+middleConnectLines:
+    Textures_DrawTexture si,8,bx
+    inc si
+    loop middleConnectLines
+    ; frame right side
+    lea bx,LevelLines_Leftmiddle
+    Textures_DrawTexture 23,6,bx
+    Textures_DrawTexture 23,7,bx
+    lea bx,Level_ConnectLinesLeft
+    Textures_DrawTexture 23,8,bx
+    ; fill it with shit 9 deafgult colors for the level actual info yk
+    mov cx, 5
+    mov si, 24
+initActualLevel:
+    Graphics_drawSquare si,7,defaultColor
+    inc si
+    loop initActualLevel
+    ; for now just level 0
+    lea bx, zero
+    Textures_printLetter 27,7,bx
+
+    popa
+    ret
+initLevel endp
+
+initLines proc
+    pusha
+    ; start y index: 9
+    ; print the "lines"
+    lea bx, LinesArray
+    mov cx, 5
+    mov si, 24
+LinesPrint:
+    mov ax, [bx]
+    ; 6 row const
+    Textures_printLetter si,9,ax
+    inc si
+    add bx, 2
+    loop LinesPrint
+    ; create left and right sides of the frame
+    lea bx, LevelLines_Leftmiddle
+    Textures_DrawTexture 23,9,bx
+    Textures_DrawTexture 23,10,bx
+    lea bx, LevelLines_Rightmiddle
+    Textures_DrawTexture 29,9,bx
+    Textures_DrawTexture 29,10,bx
+    ; draw the bottom side
+    lea bx, Lines_BottomLeftFrame
+    Textures_DrawTexture 23,11,bx
+    mov si, 24
+    mov cx, 5
+    lea bx, Lines_BottomMiddleFrame
+bottomFrame:
+    Textures_DrawTexture si,11,bx
+    inc si
+    loop bottomFrame
+    lea bx, Lines_BottomRightFrame
+    Textures_DrawTexture si,11,bx
+    ; fill the liens with bs currently fix later
+    mov si, 24
+    mov cx, 5
+initActualLines:
+    Graphics_DrawSquare si,10,defaultColor
+    inc si
+    loop initActualLines
+    lea bx, zero
+    Textures_printLetter 27,10,bx
+
+    popa
+    ret
+initLines endp

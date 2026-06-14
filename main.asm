@@ -9,7 +9,7 @@ include includes\header.asm
     ; index = 320y + x
     frontBuffer db 320 * 200 dup (0) ; program will be double buffered, meaning when you render -> copy to map -> do each pixel in frontbuffer -> 2 bytes each copy to map. ( faster , and no flickering)
     ; Variable to hold the score
-    Score db 0
+    Score dw 0
 .code
 main:
     mov ax, @data

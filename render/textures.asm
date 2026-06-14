@@ -126,6 +126,97 @@ TEXTURES SEGMENT PARA PUBLIC
     db defaultColor,frameScoreColor,defaultColor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor
     db defaultColor,frameScoreColor,defaultColor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor
 
+    Score_LeftBelowTheScore db defaultColor,defaultColor,defaultColor,defaultColor,defaultColor,defaultColor,defaultColor,defaultColor
+    db defaultColor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor
+    db defaultColor,defaultColor,defaultColor,defaultColor,defaultColor,defaultColor,defaultColor,defaultColor
+    db defaultColor,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+    db defaultColor,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+    db defaultColor,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+    db defaultColor,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+    db defaultColor,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+
+    Score_MiddleBelowTheScore db defaultColor,defaultColor,defaultColor,defaultColor,defaultColor,defaultColor,defaultColor,defaultColor
+    db frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor
+    db defaultColor,defaultColor,defaultColor,defaultColor,defaultColor,defaultColor,defaultColor,defaultColor
+    db darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+    db darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+    db darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+    db darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+    db darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+
+    LevelLines_Leftmiddle db defaultColor,darkTeal,darkTeal,darkTeal,darkTeal,defaultColor,frameScoreColor,defaultColor
+    db defaultColor,darkTeal,darkTeal,darkTeal,darkTeal,defaultColor,frameScoreColor,defaultColor
+    db defaultColor,darkTeal,darkTeal,darkTeal,darkTeal,defaultColor,frameScoreColor,defaultColor
+    db defaultColor,darkTeal,darkTeal,darkTeal,darkTeal,defaultColor,frameScoreColor,defaultColor
+    db defaultColor,darkTeal,darkTeal,darkTeal,darkTeal,defaultColor,frameScoreColor,defaultColor
+    db defaultColor,darkTeal,darkTeal,darkTeal,darkTeal,defaultColor,frameScoreColor,defaultColor
+    db defaultColor,darkTeal,darkTeal,darkTeal,darkTeal,defaultColor,frameScoreColor,defaultColor
+    db defaultColor,darkTeal,darkTeal,darkTeal,darkTeal,defaultColor,frameScoreColor,defaultColor
+
+    LevelLines_Rightmiddle db defaultColor,frameScoreColor,defaultColor,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+    db defaultColor,frameScoreColor,defaultColor,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+    db defaultColor,frameScoreColor,defaultColor,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+    db defaultColor,frameScoreColor,defaultColor,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+    db defaultColor,frameScoreColor,defaultColor,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+    db defaultColor,frameScoreColor,defaultColor,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+    db defaultColor,frameScoreColor,defaultColor,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+    db defaultColor,frameScoreColor,defaultColor,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+
+    Level_ConnectLinesRight db frameScoreColor,frameScoreColor,defaultColor,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+    db frameScoreColor,defaultColor,defaultColor,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+    db defaultColor,defaultColor,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+    db darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+    db darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+    db defaultColor,defaultColor,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+    db frameScoreColor,defaultColor,defaultColor,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+    db frameScoreColor,frameScoreColor,defaultColor,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+
+    Level_ConnectLinesMiddle db defaultColor,defaultColor,defaultColor,defaultColor,defaultColor,defaultColor,defaultColor,defaultColor
+    db frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor
+    db defaultColor,defaultColor,defaultColor,defaultColor,defaultColor,defaultColor,defaultColor,defaultColor
+    db darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+    db darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+    db defaultColor,defaultColor,defaultColor,defaultColor,defaultColor,defaultColor,defaultColor,defaultColor
+    db frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor
+    db defaultColor,defaultColor,defaultColor,defaultColor,defaultColor,defaultColor,defaultColor,defaultColor
+
+    Level_ConnectLinesLeft db defaultColor,darkTeal,darkTeal,darkTeal,darkTeal,defaultColor,frameScoreColor,frameScoreColor
+    db defaultColor,darkTeal,darkTeal,darkTeal,darkTeal,defaultColor,defaultColor,frameScoreColor
+    db defaultColor,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,defaultColor,defaultColor
+    db defaultColor,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+    db defaultColor,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+    db defaultColor,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,defaultColor,defaultColor
+    db defaultColor,darkTeal,darkTeal,darkTeal,darkTeal,defaultColor,defaultColor,frameScoreColor
+    db defaultColor,darkTeal,darkTeal,darkTeal,darkTeal,defaultColor,frameScoreColor,frameScoreColor
+
+    Lines_BottomLeftFrame db defaultColor,darkTeal,darkTeal,darkTeal,darkTeal,defaultColor,frameScoreColor,frameScoreColor
+    db defaultColor,darkTeal,darkTeal,darkTeal,darkTeal,defaultColor,defaultColor,frameScoreColor
+    db defaultColor,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,defaultColor,defaultColor
+    db defaultColor,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+    db defaultColor,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+    db defaultColor,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+    db defaultColor,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+    db defaultColor,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+
+    Lines_BottomRightFrame db frameScoreColor,frameScoreColor,defaultColor,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+    db frameScoreColor,defaultColor,defaultColor,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+    db defaultColor,defaultColor,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+    db darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+    db darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+    db darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+    db darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+    db darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+
+    Lines_BottomMiddleFrame db defaultColor,defaultColor,defaultColor,defaultColor,defaultColor,defaultColor,defaultColor,defaultColor
+    db frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor,frameScoreColor
+    db defaultColor,defaultColor,defaultColor,defaultColor,defaultColor,defaultColor,defaultColor,defaultColor
+    db darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+    db darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+    db darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+    db darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+    db darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+
+
     textureArray dw 0, offset oShapeTexture, offset zShapeTexture, offset LShapeTexture, offset sShapeTexture, offset tShapeTexture
 TEXTURES ENDS
 
@@ -146,8 +237,16 @@ TEXTURES ENDS
     oLetter db 00000000b,00111100b,01100110b,01100110b,01100110b,01100110b,00111100b,00000000b
     rLetter db 00000000b,01111100b,01100110b,01100110b,01111100b,01101000b,01100110b,00000000b
     eLetter db 00000000b,01111110b,01100000b,01111100b,01100000b,01100000b,01111110b,00000000b
+    lLetter db 00000000b,01100000b,01100000b,01100000b,01100000b,01100000b,01111110b,00000000b
+    vLetter db 00000000b,01100110b,01100110b,01100110b,01100110b,00111100b,00011000b,00000000b
+    iLetter db 00000000b,00111100b,00011000b,00011000b,00011000b,00011000b,00111100b,00000000b
+    nLetter db 00000000b,11000110b,11100110b,11110110b,11011110b,11001110b,11000110b,00000000b
 
     ScoreArray dw offset sLetter,offset cLetter,offset oLetter,offset rLetter,offset eLetter
+    LevelArray dw offset lLetter,offset eLetter,offset vLetter,offset eLetter,offset lLetter
+    LinesArray dw offset lLetter,offset iLetter,offset nLetter,offset eLetter,offset sLetter
+    numbersArray dw offset zero, offset one , offset two, offset three, offset four, offset five, offset six, offset seven, offset eight, offset nine
+
 .code
 getTextureOffset proc
     push bp
@@ -320,3 +419,42 @@ compareBytes:
     pop bp
     ret 6
 printLetter endp
+
+Textures_printScore proc
+    pusha
+    ; function will get each number right to left
+    ; while ( x / 10 != 0)
+        ; get the moduleo, that will be the number and then print it acourding to the loops counter
+    mov di, 28 ;start index is 28
+    ; load first score
+    mov bx, word ptr Score
+forEachNum:
+    mov ax, bx
+    mov cx, 10 ; divisor
+    xor dx,dx
+    div cx
+    ; ax = result
+    ; dx = modulo
+    mov bx, ax
+    ; cmp the result to zero, if so stop the loop
+    cmp bx, 0
+    jle exitLoopNum
+    ; otherwise , print the remainder
+    mov cx, dx
+    mov si, cx
+    shl si, 1
+    mov cx, numbersArray[si]
+    Textures_printLetter di, 3, cx
+    dec di
+    jmp forEachNum
+exitLoopNum:
+    ; print one last time
+    mov cx, dx
+    mov si, cx
+    shl si, 1
+    mov cx, numbersArray[si]
+    Textures_printLetter di, 3, cx
+    popa
+    ret
+
+Textures_printScore endp

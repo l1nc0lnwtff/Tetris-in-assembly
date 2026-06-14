@@ -89,3 +89,11 @@ Utils_SaveToFrontBuffer macro xPos,yPos,value
     push value ; bp + 4
     call saveToFrontBuffer
 endm
+Score_addScore macro amount
+    push amount
+    call addScore
+endm
+Score_rowAdder macro rows
+    push rows
+    call rowAdder
+endm
