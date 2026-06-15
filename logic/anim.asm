@@ -81,9 +81,12 @@ forColumnAnimation:
     cmp word ptr timesToLoop,4
     jl loopAnimation
     Score_rowAdder numberOfLines
+    ; check each time if ewe need to increment the score
     mov cx, numberOfLines
-    add lines,cx
+checkLevel:
+    inc lines
     call levelChecker
+    loop checkLevel
 exitAnimation:
     add sp, 12
     popa

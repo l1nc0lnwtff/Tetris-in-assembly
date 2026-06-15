@@ -2,14 +2,14 @@
 gameLoop proc
     push bp
     mov bp,sp
-    sub sp, 2
+    sub sp, 4
 
-    currentShapePush equ [bp - 2]
+    currentID equ [bp - 2]
     ; first init
     push ax
     xor ah,ah
     mov al, currentShape
-    mov currentShapePush, ax
+    mov currentID, ax
     pop ax
 
 game:
@@ -19,7 +19,7 @@ game:
     ; a key was pressed , remove it from keyboard buffer
     call Input_keyHandling
     call Input_flushKeyboard
-    Graphics_insertShape xPointer,yPointer,currentShapePush
+    Graphics_insertShape xPointer,yPointer,currentID
 skip:
     cmp [newShape],1
     jnz continueGameLoop
@@ -31,7 +31,7 @@ skip:
     push ax
     xor ah,ah
     mov al, currentShape
-    mov currentShapePush, ax
+    mov currentID, ax
     pop ax
 
     call Animation_clearLine
@@ -40,8 +40,9 @@ skip:
     mov [newShape],0
 continueGameLoop:
     call Move_gravityHandling ; for now for each 60 frames , in the future with later implemantation
-    Graphics_insertShape xPointer,yPointer,currentShapePush
+    Graphics_insertShape xPointer,yPointer,currentID
 
+    Graphics_drawPreview currentID
     ; put the map stuff on the frontBuffer , and render it
     Textures_printDigits score,28,3
     Textures_printDigits level,27,7
@@ -55,7 +56,7 @@ continueGameLoop:
     jne exitLoop
     jmp game
 exitLoop:
-    add sp,2
+    add sp,4
     pop bp
     ret
 gameLoop endp

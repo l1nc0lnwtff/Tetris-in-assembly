@@ -245,3 +245,56 @@ drawRect proc ; function takes x,y,width,height,color
     pop bp
     ret 10
 drawRect endp
+
+drawPreview proc
+    push bp
+    mov bp,sp
+    pusha
+    shapeID equ ss:[bp + 4]
+    ; basically just acourding to the shape id print the correct shape
+    mov si, shapeID
+    dec si  ; make the 1-5, 0-4 (example ) , basically just to make it array indexing
+    shl si, 1 ; get the index
+    mov si, previewArray[si] ; lea si, currentShapeXYpos
+    xor cx,cx
+    mov di, 13
+    forEachRowPreviewShape:
+    xor dx,dx
+    mov ax, 25 ;starting xPos
+forEachColPreviewShape:
+    ; get whats in the current index
+    ; index = 4y + x
+    ; bx = index
+    mov bx, cx
+    shl bx, 2 ; 4yPos
+    add bx, dx ;  x
+    ; ax = xPos
+    ; di = yPos
+
+    cmp byte ptr ds:[si + bx], 0
+    je defaultColorPreview
+    ; otherwise , print the correct shape
+    mov bx, ax
+    Textures_getOffset shapeID
+    Textures_DrawTexture bx, di, ax
+    mov ax,bx
+
+    jmp innerPreviewCheck
+defaultColorPreview:
+    Graphics_DrawSquare ax,di,defaultColor
+innerPreviewCheck:
+    ; inner loop
+    inc dx
+    inc ax  ; fuck this line debugged for 1 hour just to fuckingf notice it was before dx , fuck my life
+    cmp dx, 4
+    jl forEachColPreviewShape
+    ; outer loop
+    inc di
+    inc cx
+    cmp cx, 4
+    jl forEachRowPreviewShape
+    popa
+    pop bp
+    ret 2
+
+drawPreview endp

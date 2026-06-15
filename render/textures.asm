@@ -280,13 +280,13 @@ TEXTURES SEGMENT PARA PUBLIC
     db darkTeal,darkTeal,darkTeal,lightGreen,defaultColor,Preview_darkerGreen,darkTeal,defaultColor
 
     Preview_RightSideFrame db defaultColor,darkTeal,Preview_darkerGreen,defaultColor,lightGreen,darkTeal,darkTeal,darkTeal
-        db defaultColor,darkTeal,Preview_darkerGreen,defaultColor,lightGreen,darkTeal,darkTeal,darkTeal
-        db defaultColor,darkTeal,Preview_darkerGreen,defaultColor,lightGreen,darkTeal,darkTeal,darkTeal
-        db defaultColor,darkTeal,Preview_darkerGreen,defaultColor,lightGreen,darkTeal,darkTeal,darkTeal
-        db defaultColor,darkTeal,Preview_darkerGreen,defaultColor,lightGreen,darkTeal,darkTeal,darkTeal
-        db defaultColor,darkTeal,Preview_darkerGreen,defaultColor,lightGreen,darkTeal,darkTeal,darkTeal
-        db defaultColor,darkTeal,Preview_darkerGreen,defaultColor,lightGreen,darkTeal,darkTeal,darkTeal
-        db defaultColor,darkTeal,Preview_darkerGreen,defaultColor,lightGreen,darkTeal,darkTeal,darkTeal
+    db defaultColor,darkTeal,Preview_darkerGreen,defaultColor,lightGreen,darkTeal,darkTeal,darkTeal
+    db defaultColor,darkTeal,Preview_darkerGreen,defaultColor,lightGreen,darkTeal,darkTeal,darkTeal
+    db defaultColor,darkTeal,Preview_darkerGreen,defaultColor,lightGreen,darkTeal,darkTeal,darkTeal
+    db defaultColor,darkTeal,Preview_darkerGreen,defaultColor,lightGreen,darkTeal,darkTeal,darkTeal
+    db defaultColor,darkTeal,Preview_darkerGreen,defaultColor,lightGreen,darkTeal,darkTeal,darkTeal
+    db defaultColor,darkTeal,Preview_darkerGreen,defaultColor,lightGreen,darkTeal,darkTeal,darkTeal
+    db defaultColor,darkTeal,Preview_darkerGreen,defaultColor,lightGreen,darkTeal,darkTeal,darkTeal
 
     textureArray dw 0, offset oShapeTexture, offset zShapeTexture, offset LShapeTexture, offset sShapeTexture, offset tShapeTexture
 TEXTURES ENDS

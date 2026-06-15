@@ -11,7 +11,7 @@ include includes\header.asm
     ; Variable to hold the score
     Score dw 0
     Level dw 0
-    lines dw 9
+    lines dw 0
 
 .code
 main:

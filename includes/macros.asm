@@ -31,6 +31,10 @@ Graphics_removeShape MACRO x,y
     push y
     call removeShape
 ENDM
+Textures_getOffset macro offset
+    push offset
+    call getTextureOffset
+endm
 
 Piece_moveIncrement MACRO pointer
     push pointer
@@ -81,6 +85,10 @@ Textures_printLetter macro xPos,yPos,letter
     push yPos ; bp + 6
     push letter ; bp + 4
     call printLetter
+endm
+Graphics_drawPreview macro shapeID
+    push shapeID
+    call drawPreview
 endm
 
 Utils_SaveToFrontBuffer macro xPos,yPos,value
