@@ -24,7 +24,7 @@ utils_CopyArray proc
     xor ax,ax
 
     ; contains 1-2
-    mov bl, currentShape
+    mov bx,currentShape
     xor bh,bh
     dec bl ; 0-1
     shl bl,1 ; 2 * currentShape , take the index
@@ -72,7 +72,7 @@ utils_randomNumber proc
 
     ; mov the random number to currentShape
     inc dl
-    mov byte ptr [currentShape], dl
+    mov byte ptr [nextShape], dl
     popa
     ret
 utils_randomNumber endp

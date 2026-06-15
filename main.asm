@@ -31,8 +31,6 @@ main:
 
     call init_Map
     call init_Colors
-    call utils_randomNumber
-    call utils_CopyArray
     call gameLoop
 
 exit:

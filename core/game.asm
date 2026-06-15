@@ -2,15 +2,14 @@
 gameLoop proc
     push bp
     mov bp,sp
-    sub sp, 4
 
-    currentID equ [bp - 2]
     ; first init
-    push ax
-    xor ah,ah
-    mov al, currentShape
-    mov currentID, ax
-    pop ax
+    ; currentShape = nextShape -> nextShape = new number
+    call utils_randomNumber
+    mov dx, word ptr nextShape
+    mov word ptr currentShape, dx
+    call utils_CopyArray
+    call utils_randomNumber
 
 game:
     ; check if key pressed -> key handling -> gravity -> render -> repeat
@@ -19,20 +18,18 @@ game:
     ; a key was pressed , remove it from keyboard buffer
     call Input_keyHandling
     call Input_flushKeyboard
-    Graphics_insertShape xPointer,yPointer,currentID
+    Graphics_insertShape xPointer,yPointer,currentShape
 skip:
     cmp [newShape],1
     jnz continueGameLoop
 
     ; spawn new piece logic and check clear lines
+    mov dx, word ptr nextShape
+    mov word ptr currentShape, dx
+    call Utils_CopyArray
     call utils_randomNumber
-    call utils_CopyArray
 
-    push ax
-    xor ah,ah
-    mov al, currentShape
-    mov currentID, ax
-    pop ax
+
 
     call Animation_clearLine
     call Logic_checkLines
@@ -40,9 +37,9 @@ skip:
     mov [newShape],0
 continueGameLoop:
     call Move_gravityHandling ; for now for each 60 frames , in the future with later implemantation
-    Graphics_insertShape xPointer,yPointer,currentID
+    Graphics_insertShape xPointer,yPointer,currentShape
 
-    Graphics_drawPreview currentID
+    Graphics_drawPreview nextShape
     ; put the map stuff on the frontBuffer , and render it
     Textures_printDigits score,28,3
     Textures_printDigits level,27,7
@@ -56,7 +53,6 @@ continueGameLoop:
     jne exitLoop
     jmp game
 exitLoop:
-    add sp,4
     pop bp
     ret
 gameLoop endp

@@ -4,7 +4,7 @@ rotatePiece proc
     mov bp,sp
     sub sp, 18
     pusha
-    ; define locals 
+    ; define locals
     direction equ [bp + 4]
     pivotIndex equ [bp - 2]
     newXPos equ [bp - 4]
@@ -15,57 +15,56 @@ rotatePiece proc
     tempY equ [bp - 18]
     ;currentShape
     ;pivotPoint
-    
+
     ; check if oShape if true -> return from func
     cmp currentShape, 1    ; 1 = oShape
     je tileExitMid
 
     ; get the pivot point for the shape , and store it inside the pivotPoint
-    mov bl, currentShape
-    xor bh, bh
+    mov bx, currentShape
     mov bl, byte ptr pivotPoint[bx]
     mov pivotIndex, bx
-    
+
     ; store the xoffset and yoffset from that position ( center tile )
     mov dl, byte ptr current_xPos[bx]
-    xor dh,dh 
+    xor dh,dh
     mov offsetX, dx
     mov dl,  byte ptr current_yPos[bx]
-    xor dh,dh 
+    xor dh,dh
     mov offsetY, dx
     ; for each tile , remove the offsetX and offsetY to make it relative to the pivot point make (x,y) -> (y, -x) add the offsets and check for collsion
-    
+
     xor si,si
     jmp tileRotate
 tileExitMid:
     jmp tileExit
-tileRotate: 
+tileRotate:
     ; grab the current tile, store in newXPos and newYPos
     mov bl , byte ptr current_xPos[si]
-    xor bh,bh 
+    xor bh,bh
     sub bx, offsetX
     mov newXPos, bx
 ; ==
     mov bl , byte ptr current_yPos[si]
-    xor bh,bh 
+    xor bh,bh
     sub bx, offsetY
     ; (x,y) -> (y,x)
-    mov newYPos, bx        
-    mov cx, newXPos        
-    mov newYPos, cx          
-    mov newXPos, bx        
-    
+    mov newYPos, bx
+    mov cx, newXPos
+    mov newYPos, cx
+    mov newXPos, bx
+
     ; compare between clockwise and counter-clockwise.
-    cmp byte ptr direction, 1 
+    cmp byte ptr direction, 1
     je clockWise
 counterClockWise:
     ; (x,y) -> (-y,x)
     neg word ptr newXPos
     jmp checkCollisionAndRotate
 clockWise:
-    ; Clockwise rotation (x,y)->(y,-x) 
-    neg word ptr newYPos   
-    
+    ; Clockwise rotation (x,y)->(y,-x)
+    neg word ptr newYPos
+
 checkCollisionAndRotate:
     mov bx, offsetX
     mov cx, offsetY
@@ -83,8 +82,8 @@ checkCollisionAndRotate:
     ; copy to temp array
     mov byte ptr ss:tempX[si], bl
     mov byte ptr ss:tempY[si], cl
-    
-    
+
+
     inc si
     cmp si, 4
     jne tileRotate
@@ -96,7 +95,7 @@ copyArray:
 
     mov byte ptr ds:current_xPos[si], bl
     mov byte ptr ds:current_yPos[si], cl
-    
+
     inc si
     cmp si,4
     jne copyArray
