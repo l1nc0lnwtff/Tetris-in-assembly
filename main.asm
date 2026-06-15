@@ -10,6 +10,9 @@ include includes\header.asm
     frontBuffer db 320 * 200 dup (0) ; program will be double buffered, meaning when you render -> copy to map -> do each pixel in frontbuffer -> 2 bytes each copy to map. ( faster , and no flickering)
     ; Variable to hold the score
     Score dw 0
+    Level dw 0
+    lines dw 9
+
 .code
 main:
     mov ax, @data

@@ -9,11 +9,26 @@ addScore proc
     ret 2
 addScore endp
 
+levelChecker proc
+    pusha
+    ; every time theres a new line , check if the row % 10 == 0, if so , we need to update the level
+    ; we will call this func at rowAdder, we dont need to check every time just when a new row is about to be added
+    mov ax, lines
+    mov cx, 10
+    xor dx,dx
+    div cx
+    cmp dx, 0
+    jne exitChecker
+    inc level
+exitChecker:
+    popa
+    ret
+levelChecker endp
+
 rowAdder proc
     push bp
     mov bp,sp
     row equ [bp + 4]
-
     cmp word ptr row, 1
     je oneRow
     cmp word ptr row,2

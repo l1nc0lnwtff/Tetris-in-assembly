@@ -81,6 +81,9 @@ forColumnAnimation:
     cmp word ptr timesToLoop,4
     jl loopAnimation
     Score_rowAdder numberOfLines
+    mov cx, numberOfLines
+    add lines,cx
+    call levelChecker
 exitAnimation:
     add sp, 12
     popa

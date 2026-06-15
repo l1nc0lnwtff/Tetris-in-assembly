@@ -43,16 +43,18 @@ continueGameLoop:
     Graphics_insertShape xPointer,yPointer,currentShapePush
 
     ; put the map stuff on the frontBuffer , and render it
-    call Textures_printScore
+    Textures_printDigits score,28,3
+    Textures_printDigits level,27,7
+    Textures_printDigits lines,27,10
     call Graphics_DrawMapTiles
     call Graphics_swapBuffers
 
     inc [tickCounter] ; each frame inc the counter
     call utils_Delay ; will delay by 50ms , so that in 1 sec it would go down once ( gravity )
     cmp bRunning,1
-    je game
-
-
+    jne exitLoop
+    jmp game
+exitLoop:
     add sp,2
     pop bp
     ret

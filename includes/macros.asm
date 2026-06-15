@@ -97,3 +97,9 @@ Score_rowAdder macro rows
     push rows
     call rowAdder
 endm
+Textures_printDigits macro amount,startX,startY
+    push startY
+    push startX
+    push amount
+    call Textures_printScore
+endm

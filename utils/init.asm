@@ -16,6 +16,7 @@ scoreDefault:
     call initScore
     call initLevel
     call initLines
+    call initPreview
 columns:
     ; draw the right side
     push ax
@@ -71,6 +72,11 @@ init_Colors proc
     Colors_changeColor 29,50,67,tShapeDark
 
     Colors_changeColor 175,215,144,animationColor
+
+    Colors_changeColor 176,215,151,lightGreen
+    Colors_changeColor 163,210,164,Preview_lighterGreen
+    Colors_changeColor 94,128,101,Preview_SinglePixel
+    Colors_changeColor 95,140,119,Preview_darkerGreen
     ret
 init_Colors endp
 ; 2 to 17 excluding -> 3 to 16 including -> i have 13 spaces inside
@@ -239,3 +245,73 @@ initActualLines:
     popa
     ret
 initLines endp
+
+initPreview proc
+    pusha
+    ; init the left side
+    mov cx, 6
+    mov si,12
+leftSideInit:
+    Graphics_DrawSquare 23,si,darkTeal
+    shl si,3
+    Graphics_DrawRect 184,si,1,8,defaultColor
+    shr si,3
+    inc si
+    loop leftSideInit
+    ; Frame
+    ; corners
+    lea bx, Preview_TopLeftFrame
+    Textures_DrawTexture 24,12,bx
+
+    lea bx, Preview_TopRightFrame
+    Textures_DrawTexture 29,12,bx
+
+    lea bx, Preview_BottomLeftFrame
+    Textures_DrawTexture 24,17,bx
+
+    lea bx, Preview_BottomRightFrame
+    Textures_DrawTexture 29,17,bx
+    mov si, 25
+    mov cx, 4
+    ; both top and bottom
+middleTopFrame:
+    lea bx, Preview_TopMiddleFrame
+    Textures_DrawTexture si,12,bx
+    lea bx, Preview_BottomMiddleFrame
+    Textures_DrawTexture si,17,bx
+    inc si
+    loop middleTopFrame
+
+    mov cx, 4
+    mov si, 13
+middleRightFrame:
+    lea bx, Preview_LeftSideFrame
+    Textures_DrawTexture 24,si,bx
+    lea bx, Preview_RightSideFrame
+    Textures_DrawTexture 29,si,bx
+    inc si
+    loop middleRightFrame
+; fill it with defualt color
+    mov cx, 0
+    mov di, 13
+
+forEachRowPreview:
+    mov si, 25
+    xor dx, dx
+forEachBlock:
+    Graphics_DrawSquare si, di, defaultColor
+    inc dx
+    cmp dx, 4
+    je innerSkip       ; if dx == 4, stop the Inner Loop
+    inc si
+    jmp forEachBlock
+innerSkip:
+    inc di
+    inc cx
+    cmp cx, 4
+    je outerSkip       ; if cx = 4, skip the backward jump
+    jmp forEachRowPreview      ; unconditional near jump
+outerSkip:
+    popa
+    ret
+initPreview endp

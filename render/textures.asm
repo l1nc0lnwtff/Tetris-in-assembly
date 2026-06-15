@@ -216,6 +216,77 @@ TEXTURES SEGMENT PARA PUBLIC
     db darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
     db darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
 
+    Preview_TopLeftFrame db darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+    db darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+    db darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+    db darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,lightGreen,lightGreen,lightGreen
+    db darkTeal,darkTeal,darkTeal,darkTeal,lightGreen,defaultColor,defaultColor,defaultColor
+    db darkTeal,darkTeal,darkTeal,lightGreen,defaultColor,defaultColor,Preview_lighterGreen,Preview_darkerGreen
+    db darkTeal,darkTeal,darkTeal,lightGreen,defaultColor,Preview_lighterGreen,Preview_SinglePixel,darkTeal
+    db darkTeal,darkTeal,darkTeal,lightGreen,defaultColor,Preview_darkerGreen,darkTeal,defaultColor
+
+    Preview_TopRightFrame db darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+    db darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+    db darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+    db lightGreen,lightGreen,lightGreen,lightGreen,darkTeal,darkTeal,darkTeal,darkTeal
+    db defaultColor,defaultColor,defaultColor,lightGreen,lightGreen,darkTeal,darkTeal,darkTeal
+    db Preview_darkerGreen,Preview_lighterGreen,defaultColor,defaultColor,lightGreen,darkTeal,darkTeal,darkTeal
+    db darkTeal,Preview_SinglePixel,Preview_lighterGreen,defaultColor,lightGreen,darkTeal,darkTeal,darkTeal
+    db defaultColor,darkTeal,Preview_darkerGreen,defaultColor,lightGreen,darkTeal,darkTeal,darkTeal
+
+    Preview_BottomLeftFrame db darkTeal,darkTeal,darkTeal,lightGreen,defaultColor,Preview_darkerGreen,darkTeal,defaultColor
+    db darkTeal,darkTeal,darkTeal,lightGreen,defaultColor,Preview_lighterGreen,Preview_SinglePixel,darkTeal
+    db darkTeal,darkTeal,darkTeal,lightGreen,defaultColor,defaultColor,Preview_lighterGreen,Preview_darkerGreen
+    db darkTeal,darkTeal,darkTeal,darkTeal,lightGreen,defaultColor,defaultColor,defaultColor
+    db darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,lightGreen,lightGreen,lightGreen
+    db darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+    db darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+    db darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+
+    Preview_BottomRightFrame db defaultColor,darkTeal,Preview_darkerGreen,defaultColor,lightGreen,darkTeal,darkTeal,darkTeal
+    db darkTeal,Preview_SinglePixel,Preview_lighterGreen,defaultColor,lightGreen,darkTeal,darkTeal,darkTeal
+    db Preview_darkerGreen,Preview_lighterGreen,defaultColor,defaultColor,lightGreen,darkTeal,darkTeal,darkTeal
+    db defaultColor,defaultColor,defaultColor,lightGreen,darkTeal,darkTeal,darkTeal,darkTeal
+    db lightGreen,lightGreen,lightGreen,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+    db darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+    db darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+    db darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+
+    Preview_TopMiddleFrame db darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+    db darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+    db darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+    db lightGreen,lightGreen,lightGreen,lightGreen,lightGreen,lightGreen,lightGreen,lightGreen
+    db defaultColor,defaultColor,defaultColor,defaultColor,defaultColor,defaultColor,defaultColor,defaultColor
+    db Preview_darkerGreen,Preview_darkerGreen,Preview_darkerGreen,Preview_darkerGreen,Preview_darkerGreen,Preview_darkerGreen,Preview_darkerGreen,Preview_darkerGreen
+    db darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+    db defaultColor,defaultColor,defaultColor,defaultColor,defaultColor,defaultColor,defaultColor,defaultColor
+
+    Preview_BottomMiddleFrame db defaultColor,defaultColor,defaultColor,defaultColor,defaultColor,defaultColor,defaultColor,defaultColor
+    db darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+    db Preview_darkerGreen,Preview_darkerGreen,Preview_darkerGreen,Preview_darkerGreen,Preview_darkerGreen,Preview_darkerGreen,Preview_darkerGreen,Preview_darkerGreen
+    db defaultColor,defaultColor,defaultColor,defaultColor,defaultColor,defaultColor,defaultColor,defaultColor
+    db lightGreen,lightGreen,lightGreen,lightGreen,lightGreen,lightGreen,lightGreen,lightGreen
+    db darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+    db darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+    db darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal,darkTeal
+
+    Preview_LeftSideFrame db darkTeal,darkTeal,darkTeal,lightGreen,defaultColor,Preview_darkerGreen,darkTeal,defaultColor
+    db darkTeal,darkTeal,darkTeal,lightGreen,defaultColor,Preview_darkerGreen,darkTeal,defaultColor
+    db darkTeal,darkTeal,darkTeal,lightGreen,defaultColor,Preview_darkerGreen,darkTeal,defaultColor
+    db darkTeal,darkTeal,darkTeal,lightGreen,defaultColor,Preview_darkerGreen,darkTeal,defaultColor
+    db darkTeal,darkTeal,darkTeal,lightGreen,defaultColor,Preview_darkerGreen,darkTeal,defaultColor
+    db darkTeal,darkTeal,darkTeal,lightGreen,defaultColor,Preview_darkerGreen,darkTeal,defaultColor
+    db darkTeal,darkTeal,darkTeal,lightGreen,defaultColor,Preview_darkerGreen,darkTeal,defaultColor
+    db darkTeal,darkTeal,darkTeal,lightGreen,defaultColor,Preview_darkerGreen,darkTeal,defaultColor
+
+    Preview_RightSideFrame db defaultColor,darkTeal,Preview_darkerGreen,defaultColor,lightGreen,darkTeal,darkTeal,darkTeal
+        db defaultColor,darkTeal,Preview_darkerGreen,defaultColor,lightGreen,darkTeal,darkTeal,darkTeal
+        db defaultColor,darkTeal,Preview_darkerGreen,defaultColor,lightGreen,darkTeal,darkTeal,darkTeal
+        db defaultColor,darkTeal,Preview_darkerGreen,defaultColor,lightGreen,darkTeal,darkTeal,darkTeal
+        db defaultColor,darkTeal,Preview_darkerGreen,defaultColor,lightGreen,darkTeal,darkTeal,darkTeal
+        db defaultColor,darkTeal,Preview_darkerGreen,defaultColor,lightGreen,darkTeal,darkTeal,darkTeal
+        db defaultColor,darkTeal,Preview_darkerGreen,defaultColor,lightGreen,darkTeal,darkTeal,darkTeal
+        db defaultColor,darkTeal,Preview_darkerGreen,defaultColor,lightGreen,darkTeal,darkTeal,darkTeal
 
     textureArray dw 0, offset oShapeTexture, offset zShapeTexture, offset LShapeTexture, offset sShapeTexture, offset tShapeTexture
 TEXTURES ENDS
@@ -421,13 +492,17 @@ compareBytes:
 printLetter endp
 
 Textures_printScore proc
+    push bp
+    mov bp, sp
     pusha
+    startX equ [bp + 6]
+    startY equ [bp + 8]
     ; function will get each number right to left
     ; while ( x / 10 != 0)
         ; get the moduleo, that will be the number and then print it acourding to the loops counter
-    mov di, 28 ;start index is 28
+    mov di, word ptr startX ;start index is 28
     ; load first score
-    mov bx, word ptr Score
+    mov bx, [bp + 4]
 forEachNum:
     mov ax, bx
     mov cx, 10 ; divisor
@@ -444,7 +519,7 @@ forEachNum:
     mov si, cx
     shl si, 1
     mov cx, numbersArray[si]
-    Textures_printLetter di, 3, cx
+    Textures_printLetter di, startY, cx
     dec di
     jmp forEachNum
 exitLoopNum:
@@ -453,8 +528,9 @@ exitLoopNum:
     mov si, cx
     shl si, 1
     mov cx, numbersArray[si]
-    Textures_printLetter di, 3, cx
+    Textures_printLetter di, startY, cx
     popa
-    ret
+    pop bp
+    ret 6
 
 Textures_printScore endp
