@@ -2,7 +2,7 @@
 REM Ensure bin directory exists
 if not exist bin mkdir bin
 
-REM Assemble and link the program 
+REM Assemble and link the program
 tasm /zi main.asm
 if errorlevel 1 goto exit
 
@@ -18,6 +18,6 @@ del main.obj
 del main.exe
 del main.map
 REM Run the executable from bin
-bin\main.exe
+BIN\main.exe
 
 :exit

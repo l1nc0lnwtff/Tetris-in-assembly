@@ -132,3 +132,17 @@ saveToFrontBuffer proc
     pop bp
     ret 6
 saveToFrontBuffer endp
+
+utils_waitForEnter proc
+    pusha
+
+checkInput:
+    mov ah, 08h
+    int 21h
+
+    cmp al, 0Dh
+    jne checkInput
+
+    popa
+    ret
+utils_waitForEnter endp

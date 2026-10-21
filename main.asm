@@ -14,6 +14,7 @@ include includes\header.asm
     lines dw 0
 
 .code
+
 main:
     mov ax, @data
     mov ds, ax
@@ -25,9 +26,8 @@ main:
 
     ; init the first displayed map Main Loophow to
     call LoadBmp
-    xor ax,ax
-    int 16h
 
+    call utils_waitForEnter
 
     call init_Map
     call init_Colors
