@@ -5,7 +5,7 @@ A retro-inspired Tetris game written in 8086 Assembly, running in dosbox.
 
 ## Demo
 
-![Tetris Gameplay](Assets/tetris-demo.gif)
+![Tetris Gameplay](Assets/readme-demo.gif)
 
 ## About
 
